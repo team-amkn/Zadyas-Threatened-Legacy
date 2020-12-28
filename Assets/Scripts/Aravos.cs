@@ -9,7 +9,7 @@ public class AravosStats : MonoBehaviour
     public float  lightninigBoltCooldown, minionSummonCooldown, cursedFireballCooldown;
     private Animator anim;
 
-
+    //ARAVOS
 
     // Start is called before the first frame update
     void Start()
