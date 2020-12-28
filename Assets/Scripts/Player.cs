@@ -20,6 +20,8 @@ public class Player : MonoBehaviour {
     private bool grounded;
     private Animator anim;
 
+    //sad hahahaha
+
     // Use this for initialization
     void Start () {
         isFacingRight = true;
