@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 261447730858261301}
   - component: {fileID: 8156127006718445333}
   - component: {fileID: 1825923856340470296}
+  - component: {fileID: 215592381}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9049924765543908751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.47, y: -2.75, z: 0}
-  m_LocalScale: {x: 0.2711779, y: 0.2711779, z: 0.2711779}
+  m_LocalScale: {x: 0.20950557, y: 0.36270043, z: 0.2711779}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31408525, y: -0.40381706}
+  m_Offset: {x: 0.039951026, y: -1.7822194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5978265, y: 5.213085}
+  m_Size: {x: 2.939241, y: 2.4562807}
   m_EdgeRadius: 0
 --- !u!50 &8156127006718445333
 Rigidbody2D:
@@ -144,3 +145,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98927c5e167e22489a46eac5f5c0344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  damage: 1
+  playerStats: {fileID: 0}
+  enemy: {fileID: 0}
+  isFacingRight: 0
+  maxSpeed: 1.2
+--- !u!61 &215592381
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9049924765543908751}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.382824, y: -0.56835514}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 9}
+    newSize: {x: 9, y: 9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.6187325, y: 4.8561897}
+  m_EdgeRadius: 0

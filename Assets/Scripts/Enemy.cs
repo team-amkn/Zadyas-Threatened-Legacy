@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Player player;
+    public float health;
+    public float damage;
+
+    public PlayerStats playerStats;
     public Transform enemy ;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        player = FindObjectOfType<Player>();
+        playerStats = FindObjectOfType<PlayerStats>();
     }
 
     public void FacePlayer()
     {
-        var x_diff = player.transform.position.x - enemy.transform.position.x;
+        
+        var x_diff = playerStats.transform.position.x - enemy.transform.position.x;
         float new_x;
         if (x_diff > 0)
         {

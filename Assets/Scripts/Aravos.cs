@@ -5,7 +5,6 @@ using UnityEngine;
 public class Aravos : Enemy
 {
 
-    public float health;
     public float lightninigBoltsCooldown, minionSummonCooldown, cursedFireballCooldown;
     private LevelManager3 levelManager;
     private Animator anim;
