@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LevelManger : MonoBehaviour
 {
+    public GameObject intialCheckPoint;
     private Player player;
     private PlayerStats playerStats;
+    private static GameObject currCheckPoint;
+
+    public static GameObject CurrCheckPoint { get => currCheckPoint; set => currCheckPoint = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,8 @@ public class LevelManger : MonoBehaviour
 
     public void Respawn()
     {
+        player.transform.position = currCheckPoint.transform.position;
+        playerStats.health = 5;
 
     }
 

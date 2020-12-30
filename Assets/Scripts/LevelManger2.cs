@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManger3 : LevelManger
+public class LevelManger2 : LevelManger
 {
-    public int maxGolemsCount, maxWraithCount;
-    public int currGolemCount, currWraithCount;
+
     // Start is called before the first frame update
     void Start()
     {
