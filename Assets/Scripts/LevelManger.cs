@@ -28,7 +28,6 @@ public class LevelManger : MonoBehaviour
     {
         player.transform.position = currCheckPoint.transform.position;
         playerStats.health = 5;
-
     }
 
 
