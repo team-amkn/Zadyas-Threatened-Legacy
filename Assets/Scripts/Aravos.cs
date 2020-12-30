@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Aravos : MonoBehaviour
+public class Aravos : Enemy
 {
 
     public float health;
     public float lightninigBoltsCooldown, minionSummonCooldown, cursedFireballCooldown;
-    private LevelManger3 levelManger;
+    private LevelManager3 levelManager;
     private Animator anim;
 
     private bool lightninigBoltsReady, minionSummonReady, cursedFireballReady;
@@ -17,14 +17,16 @@ public class Aravos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemy = this.GetComponent<Transform>();
         anim = GetComponent<Animator>();
-        levelManger = FindObjectOfType<LevelManger3>();
+        levelManager = FindObjectOfType<LevelManager3>();
         lightninigBoltsReady = minionSummonReady = cursedFireballReady = true;
-}
+    }
 
     // Update is called once per frame
     void Update()
     {
+        FacePlayer();
 
         if ( health <= 0)
         {
@@ -50,22 +52,23 @@ public class Aravos : MonoBehaviour
         }
     }
 
+
     IEnumerator SummonMinions()
     {
 
         while (true)
         {
-            if (levelManger.currGolemCount < levelManger.maxGolemsCount)
+            if (levelManager.currGolemCount < levelManager.maxGolemsCount)
             {
                 Instantiate(golem, new Vector3(-5.47f, -3.49f, 0f), Quaternion.identity);
-                levelManger.currGolemCount++;
+                levelManager.currGolemCount++;
             }
 
             for(int i = 0; i < 2; i++)
             {
-                if (levelManger.currWraithCount >= levelManger.maxWraithCount) break;
+                if (levelManager.currWraithCount >= levelManager.maxWraithCount) break;
                 Instantiate(wraith, new Vector3(1.452f, -2.885f, 0f), Quaternion.identity);
-                levelManger.currWraithCount++;
+                levelManager.currWraithCount++;
             }
         
             yield return new WaitForSeconds(minionSummonCooldown);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManger : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
     public GameObject intialCheckPoint;
     private Player player;

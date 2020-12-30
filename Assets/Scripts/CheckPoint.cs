@@ -23,11 +23,11 @@ public class CheckPoint : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player")){
 
-            if (this.gameObject != LevelManger.CurrCheckPoint)
+            if (this.gameObject != LevelManager.CurrCheckPoint)
             {
-                Destroy(LevelManger.CurrCheckPoint);
-                LevelManger.CurrCheckPoint = gameObject;
-                Debug.Log(LevelManger.CurrCheckPoint.name);
+                LevelManager.CurrCheckPoint.GetComponent<BoxCollider2D>().enabled = false;
+                LevelManager.CurrCheckPoint = gameObject;
+                Debug.Log(LevelManager.CurrCheckPoint.name);
             }
 
         }

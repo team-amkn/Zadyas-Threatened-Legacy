@@ -1629,6 +1629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc12eee845a8a74eae4fbf986cfa25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intialCheckPoint: {fileID: 0}
   maxGolemsCount: 3
   maxWraithCount: 5
   currGolemCount: 0
@@ -2647,6 +2648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f269ed8d010b57245a1839f835fee7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemy: {fileID: 0}
   health: 23
   lightninigBoltsCooldown: 4
   minionSummonCooldown: 4

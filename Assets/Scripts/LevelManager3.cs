@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManger1 : LevelManger
+public class LevelManager3 : LevelManager
 {
+    public int maxGolemsCount, maxWraithCount;
+    public int currGolemCount, currWraithCount;
     // Start is called before the first frame update
     void Start()
     {
-        LevelManger.CurrCheckPoint = intialCheckPoint;
+        LevelManager.CurrCheckPoint = intialCheckPoint;
     }
 
     // Update is called once per frame
