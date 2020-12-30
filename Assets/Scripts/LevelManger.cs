@@ -19,7 +19,7 @@ public class LevelManger : MonoBehaviour
         
     }
 
-    public void PlayerDies()
+    public void Respawn()
     {
 
     }
