@@ -7,12 +7,11 @@ public class basicFireball : Projectile
 
     private Transform axel;
 
-   protected override void Start()
+    void Start()
     {
-        //sourceGameObject = GameObject.FindWithTag("Player");
-        base.Start();
-        
-
+        axel = FindObjectOfType<Player>().GetComponent<Transform>();
+        sourceGameObject = axel;
+        shootProjectile();
     }
 
     // Update is called once per frame
