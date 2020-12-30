@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public float moveSpeed;
     public float jumpHeight;
-    bool isFacingRight;
+    public bool isFacingRight;
     bool isTeleporting = false;
     public float teleportDuration;
     float teleportTime = 0f;
@@ -20,15 +20,35 @@ public class Player : MonoBehaviour {
     private bool grounded;
     private Animator anim;
 
-    //sad hahahaha
+    //Shooting basic fireball
+    public Transform  shootingPoint;
+    public GameObject basicFireball;
+    public KeyCode basicFireballKey;
+    public bool isbasicFireBallOnCooldown;
+    public float basicFireBallCooldown;
+    public float basicFireBallTimer;
+
+
+    //Shooting super fireball
+    public GameObject superFireball;
+    public KeyCode superFireballKey;
+    public bool isSuperFireBallOnCooldown;
+    public float superFireBallCooldown;
+    public float superFireBallTimer;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         isFacingRight = true;
         anim = GetComponent<Animator>();
+ 
+        basicFireBallTimer = 0;
+        isbasicFireBallOnCooldown = false;
 
-		
-	}
+        superFireBallTimer = 0;
+        isSuperFireBallOnCooldown = false;
+
+    }
 
     void flip()
     {
@@ -44,14 +64,54 @@ public class Player : MonoBehaviour {
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
-	
-	// Update is called once per frame
-	void Update () {
+    public void shootBasicFireBall()
+    {
+        Instantiate(basicFireball, shootingPoint.position, shootingPoint.rotation);
+        isbasicFireBallOnCooldown = true;
+    }
+
+    public void shootSuperFireball()
+    {
+        Instantiate(superFireball, shootingPoint.position, shootingPoint.rotation);
+        isSuperFireBallOnCooldown = true;
+    }
+    // Update is called once per frame
+    void Update () {
+        //shooting basic fireball
+        if (Input.GetKeyDown(basicFireballKey) && !isbasicFireBallOnCooldown)
+        {
+            shootBasicFireBall();
+        }     
+        //start cooldown timer for basic fireball
+        if (isbasicFireBallOnCooldown)
+        {
+            basicFireBallTimer+= Time.deltaTime;
+            if(basicFireBallTimer >= basicFireBallCooldown)
+            {
+                isbasicFireBallOnCooldown = false;
+                basicFireBallTimer = 0;
+            }
+        }
+
+        //shooting super fireball
+        if (Input.GetKeyDown(superFireballKey) && !isSuperFireBallOnCooldown)
+        {
+            shootSuperFireball();
+        }
 
         if (Input.GetKey(Teleport) && !isTeleporting) {
             isTeleporting = true;
         }
-
+        //start cooldown timer for super fireball
+        if (isSuperFireBallOnCooldown)
+        {
+            superFireBallTimer += Time.deltaTime;
+            if (superFireBallTimer >= superFireBallCooldown)
+            {
+                isbasicFireBallOnCooldown = false;
+                basicFireBallTimer = 0;
+            }
+        }
         if (isTeleporting) {
             teleportTime += Time.deltaTime;
             if (teleportTime >= teleportDuration) {
@@ -93,5 +153,6 @@ public class Player : MonoBehaviour {
 
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
+        
 	}
 }
