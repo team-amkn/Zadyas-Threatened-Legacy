@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public int damage;
     public int speed;
-    public Transform sourceGameObject;
+    protected Transform sourceGameObject;
     public float distanceTravelled;
     public float maximumTravelledDistance;
 

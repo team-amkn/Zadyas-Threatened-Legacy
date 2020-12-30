@@ -15,9 +15,10 @@ public class Aravos : Enemy
     public Transform lightningTransform1, lightningTransform2, lightningTransform3, lightningTransform4;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        enemy = this.GetComponent<Transform>();
+        base.Start();
+        this.enemy = this.GetComponent<Transform>();
         anim = GetComponent<Animator>();
         levelManager = FindObjectOfType<LevelManager3>();
         lightninigBoltsReady = minionSummonReady = cursedFireballReady = true;
