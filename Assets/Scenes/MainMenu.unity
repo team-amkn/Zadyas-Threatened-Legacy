@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.8, y: -11.068802}
+  m_AnchoredPosition: {x: -1.8, y: -14.503}
   m_SizeDelta: {x: 135.84, y: 61.744}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &43775042
@@ -374,8 +374,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 55.33121}
-  m_SizeDelta: {x: 155.5773, y: 70.7169}
+  m_AnchoredPosition: {x: -1.8, y: 58.1}
+  m_SizeDelta: {x: 150.4036, y: 76.4623}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &258313502
 MonoBehaviour:
@@ -505,8 +505,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.903, y: -58.449}
-  m_SizeDelta: {x: 534.03, y: 348.41}
+  m_AnchoredPosition: {x: 1.0212, y: -56.569313}
+  m_SizeDelta: {x: 608.6425, y: 381.0494}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312680254
 MonoBehaviour:
@@ -528,7 +528,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 9755bd22360055e4f9f7bec98385707d, type: 3}
+  m_Texture: {fileID: 2800000, guid: 60c6d1687d27d6b4d8c3da2521146895, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -681,7 +681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -77.5688}
+  m_AnchoredPosition: {x: -1.8, y: -82.2}
   m_SizeDelta: {x: 134.3622, y: 70.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &579944855
@@ -1376,8 +1376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -58.131195}
-  m_SizeDelta: {x: 535.0009, y: 349.0457}
+  m_AnchoredPosition: {x: -3.4328, y: -57.2}
+  m_SizeDelta: {x: 553.124, y: 356.2149}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1815612902
 MonoBehaviour:
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6362643f262fed54e94cc475143b7ecd, type: 3}
+  m_Texture: {fileID: 2800000, guid: a6d16b34bbca7614c8598210f56c4f43, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
