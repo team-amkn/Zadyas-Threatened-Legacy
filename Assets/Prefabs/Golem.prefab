@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 215592381}
   m_Layer: 0
   m_Name: Golem
-  m_TagString: Enemy
+  m_TagString: Golem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.039951026, y: -1.7822194}
+  m_Offset: {x: -0.30611408, y: -0.40293264}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.939241, y: 2.4562807}
+  m_Size: {x: 3.6313713, y: 5.2148542}
   m_EdgeRadius: 0
 --- !u!50 &8156127006718445333
 Rigidbody2D:
@@ -145,12 +145,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98927c5e167e22489a46eac5f5c0344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
   damage: 1
+  maxHealth: 1
+  lineOfSight: 10
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
-  isFacingRight: 0
-  maxSpeed: 1.2
+  maxSpeed: 5
+  patrolAreaRadius: 10
+  onPatrolMovingLeft: 0
 --- !u!61 &215592381
 BoxCollider2D:
   m_ObjectHideFlags: 0

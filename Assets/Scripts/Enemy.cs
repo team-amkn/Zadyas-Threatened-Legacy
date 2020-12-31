@@ -1,22 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Stats
 {
-    public float health;
-    public float damage;
-
+    public float lineOfSight;
     public PlayerStats playerStats;
-    public Transform enemy ;
+    public Transform enemy;
+    public bool scalePositiveWhenFacingRight = true;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        ResetHealth();
         playerStats = FindObjectOfType<PlayerStats>();
+
     }
 
-    public void FacePlayer()
+    protected virtual void FacePlayer()
     {
         
         var x_diff = playerStats.transform.position.x - enemy.transform.position.x;
@@ -29,12 +31,15 @@ public class Enemy : MonoBehaviour
         {
             new_x = -System.Math.Abs(enemy.transform.localScale.x);
         }
+        if (!scalePositiveWhenFacingRight) new_x = -new_x;
        enemy.transform.localScale = new Vector3(new_x, enemy.transform.localScale.y, enemy.transform.localScale.z);
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool isPlayerWithinLineOfSight()
     {
-        
+        if (lineOfSight >= Mathf.Abs(playerStats.transform.position.x - transform.position.x))
+            return true;
+        else
+            return false;
     }
 }

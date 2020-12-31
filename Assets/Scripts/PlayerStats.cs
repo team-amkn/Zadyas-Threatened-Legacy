@@ -2,27 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : Stats
 {
-    public float health;
     public float dashCoolDown;
     public float superFireBallCooldown, fireBallCooldown;
 
 
-    void Start()
+     void Start()
     {
-        
+        ResetHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public void TakeDamage(float dmg)
+    public override void TakeDamage(float dmg)
+    {
+        base.TakeDamage(dmg);
+
+    }
+
+    public override void Killed()
     {
 
     }
+
 
 }

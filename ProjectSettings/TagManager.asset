@@ -8,6 +8,8 @@ TagManager:
   - Minion
   - Aravos
   - Enemy
+  - Wall
+  - Golem
   layers:
   - Default
   - TransparentFX

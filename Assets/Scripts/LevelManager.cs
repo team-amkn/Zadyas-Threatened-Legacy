@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     public void Respawn()
     {
         player.transform.position = currCheckPoint.transform.position;
-        playerStats.health = 5;
+        playerStats.AddHealth(playerStats.maxHealth);
     }
 
 

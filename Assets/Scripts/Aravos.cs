@@ -28,24 +28,23 @@ public class Aravos : Enemy
     {
         FacePlayer();
 
-        if ( health <= 0)
+        if ( Health <= 0)
         {
             Killed();
         }
 
-
-        if (health <= 100 && cursedFireballReady)
+        if (Health <= 100 && cursedFireballReady)
         {
 
             StartCoroutine(FireCursedFireball());
             cursedFireballReady = false;
         }
-        if (health <= 75 && minionSummonReady)
+        if (Health <= 75 && minionSummonReady)
         {
             StartCoroutine(SummonMinions());
             minionSummonReady = false;
         }
-        if (health <= 25 && lightninigBoltsReady)
+        if (Health <= 25 && lightninigBoltsReady)
         {
             StartCoroutine(SummonLightningBolts());
             lightninigBoltsReady = false;
@@ -60,14 +59,16 @@ public class Aravos : Enemy
         {
             if (levelManager.currGolemCount < levelManager.maxGolemsCount)
             {
-                Instantiate(golem, new Vector3(-5.47f, -3.49f, 0f), Quaternion.identity);
+                GameObject spawn = Instantiate(golem, new Vector3(-5.47f, -3.49f, 0f), Quaternion.identity);
+                spawn.GetComponent<Golem>().lineOfSight *= 1000;
                 levelManager.currGolemCount++;
             }
 
             for(int i = 0; i < 2; i++)
             {
                 if (levelManager.currWraithCount >= levelManager.maxWraithCount) break;
-                Instantiate(wraith, new Vector3(1.452f, -2.885f, 0f), Quaternion.identity);
+                GameObject spawn =Instantiate(wraith, new Vector3(1.452f, -2.885f, 0f), Quaternion.identity);
+                spawn.GetComponent<Wraith>().lineOfSight *= 1000;
                 levelManager.currWraithCount++;
             }
         
@@ -98,12 +99,13 @@ public class Aravos : Enemy
         }
     }
 
-    public void TakeDamage(float dmg)
+    public override void TakeDamage(float dmg)
     {
-        
+        base.TakeDamage(dmg);
+
     }
 
-    void Killed()
+    public override void Killed()
     {
 
     }

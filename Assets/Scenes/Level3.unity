@@ -3250,8 +3250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f269ed8d010b57245a1839f835fee7c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 23
   damage: 0
+  maxHealth: 23
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
   lightninigBoltsCooldown: 4
@@ -5470,6 +5470,14 @@ PrefabInstance:
     - target: {fileID: 6387428703214002520, guid: 6326da44f5808604f8e3b9066007cbce, type: 3}
       propertyPath: m_Name
       value: Axel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387428703214002851, guid: 6326da44f5808604f8e3b9066007cbce, type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387428703214002851, guid: 6326da44f5808604f8e3b9066007cbce, type: 3}
+      propertyPath: maxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6387428703214002853, guid: 6326da44f5808604f8e3b9066007cbce, type: 3}
       propertyPath: m_RootOrder

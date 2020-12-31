@@ -95,3 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02110dc966c84145a3e48d84eccc97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  maxHealth: 1
+  lineOfSight: 10
+  playerStats: {fileID: 0}
+  enemy: {fileID: 0}
