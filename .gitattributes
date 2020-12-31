@@ -1,6 +1,15 @@
 * text=auto
 
 # Unity files
+<<<<<<< HEAD
+*.unity binary
+*.meta binary
+=======
+*.meta binary
+*.unity binary
+>>>>>>> visual-modifications
+*.asset binary
+*.prefab binary
 *.meta -text merge=unityyamlmerge diff
 *.unity -text merge=unityyamlmerge diff
 *.asset -text merge=unityyamlmerge diff
