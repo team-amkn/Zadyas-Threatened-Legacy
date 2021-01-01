@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public int damage;
-    public int speed;
+    public float damage;
+    public float speed;
     protected Transform sourceGameObject;
     public float distanceTravelled;
     public float maximumTravelledDistance;
@@ -30,6 +30,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+       
 
         GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
 

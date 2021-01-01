@@ -10,6 +10,7 @@ public class PlayerStats : Stats
 
      void Start()
     {
+        obj = this.gameObject;
         ResetHealth();
     }
 

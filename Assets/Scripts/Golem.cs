@@ -16,8 +16,14 @@ public class Golem : Enemy
     // Start is called before the first frame update
     protected override void Start()
     {
+        obj = this.gameObject;
         base.Start();
+        ResetHealth();
+
+
+
         this.enemy = this.GetComponent<Transform>();
+        
         leftAreaBoundary = transform.position.x - patrolAreaRadius;
         rightAreaBoundary = transform.position.x + patrolAreaRadius;
         onPatrolMovingLeft = (Random.value > 0.5f);
@@ -96,8 +102,5 @@ void Update()
 
     }
 
-    public override void Killed()
-    {
-
-    }
+    
 }

@@ -16,6 +16,7 @@ public class Aravos : Enemy
     // Start is called before the first frame update
     protected override void Start()
     {
+        obj = this.gameObject;
         base.Start();
         this.enemy = this.GetComponent<Transform>();
         anim = GetComponent<Animator>();
@@ -64,13 +65,13 @@ public class Aravos : Enemy
                 levelManager.currGolemCount++;
             }
 
-            for(int i = 0; i < 2; i++)
+            /*for(int i = 0; i < 2; i++)
             {
                 if (levelManager.currWraithCount >= levelManager.maxWraithCount) break;
                 GameObject spawn =Instantiate(wraith, new Vector3(1.452f, -2.885f, 0f), Quaternion.identity);
                 spawn.GetComponent<Wraith>().lineOfSight *= 1000;
                 levelManager.currWraithCount++;
-            }
+            }*/
         
             yield return new WaitForSeconds(minionSummonCooldown);
 

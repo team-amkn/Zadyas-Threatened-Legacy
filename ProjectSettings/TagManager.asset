@@ -10,6 +10,9 @@ TagManager:
   - Enemy
   - Wall
   - Golem
+  - Wraith
+  - basicFireball
+  - GolemHitbox
   layers:
   - Default
   - TransparentFX
