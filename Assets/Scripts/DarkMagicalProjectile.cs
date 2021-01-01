@@ -6,32 +6,30 @@ public class DarkMagicalProjectile : Projectile
 {
 
     private Transform wraithEnemy;
-    public Transform target;
+    public Transform axel;
+    private Vector3 target;
     // Start is called before the first frame update
     void Start()
     {
         wraithEnemy = FindObjectOfType<Wraith>().GetComponent<Transform>();
         sourceGameObject = wraithEnemy; 
-        target =  FindObjectOfType<Player>().GetComponent<Transform>();
+        axel =  FindObjectOfType<Player>().GetComponent<Transform>();
         shootProjectile();
+        Rigidbody2D rd = GetComponent<Rigidbody2D>();
 
+        Vector2 moveDirection = (axel.transform.position - transform.position).normalized * Mathf.Abs(speed);
+        rd.velocity = new Vector2(moveDirection.x, moveDirection.y);
 
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected override void LateUpdate()
     {
-        base.Update();
        
-        if (target.transform.position.x < wraithEnemy.transform.position.x)
+        if (transform.position.x == target.x && transform.position.y == target.y)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position,
-                                                     target.transform.position,
-                                                     -speed * Time.deltaTime);
+            Destroy(this.gameObject, 0.1f);
         }
-        else this.transform.position = Vector3.MoveTowards(this.transform.position,
-                                                     target.transform.position, speed * Time.deltaTime);
-
 
     }
     void OnTriggerEnter2D(Collider2D other)

@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 4537411474130649290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.4519999, y: -2.8849998, z: 0}
-  m_LocalScale: {x: -0.6129495, y: 0.63036215, z: 0.6046059}
+  m_LocalScale: {x: 0.6129495, y: 0.63036215, z: 0.6046059}
   m_Children:
   - {fileID: 452474110}
   m_Father: {fileID: 0}
@@ -134,10 +134,10 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
   scalePositiveWhenFacingRight: 1
+  basicAttackCooldown: 3
+  isBasicAttackOnCooldown: 0
   darkMagicalBallPoint: {fileID: 452474110}
   projectile: {fileID: 4759881236509376049, guid: bec5e078f85a7964d92b2d5595b6d2ab, type: 3}
-  projectileCooldown: 5
-  isProjectileOnCooldown: 0
 --- !u!50 &1159303322
 Rigidbody2D:
   serializedVersion: 4

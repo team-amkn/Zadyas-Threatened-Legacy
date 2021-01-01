@@ -16,9 +16,9 @@ public class BigMonsterProjectile : Projectile
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected override void LateUpdate()
     {
-        base.Update();
+        base.LateUpdate();
         this.transform.position = Vector3.MoveTowards(this.transform.position,
                                                      target.transform.position, speed * Time.deltaTime);
     }

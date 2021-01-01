@@ -14,11 +14,6 @@ public class PlayerStats : Stats
         ResetHealth();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public override void TakeDamage(float dmg)
     {
         base.TakeDamage(dmg);
@@ -27,7 +22,7 @@ public class PlayerStats : Stats
 
     public override void Killed()
     {
-
+        base.Killed();
     }
 
 

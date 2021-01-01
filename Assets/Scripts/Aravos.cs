@@ -7,7 +7,6 @@ public class Aravos : Enemy
 
     public float lightninigBoltsCooldown, minionSummonCooldown, cursedFireballCooldown;
     private LevelManager3 levelManager;
-    private Animator anim;
 
     private bool lightninigBoltsReady, minionSummonReady, cursedFireballReady;
     public GameObject wraith, golem, lightning;
@@ -18,8 +17,9 @@ public class Aravos : Enemy
     {
         obj = this.gameObject;
         base.Start();
+        ResetHealth();
         this.enemy = this.GetComponent<Transform>();
-        anim = GetComponent<Animator>();
+
         levelManager = FindObjectOfType<LevelManager3>();
         lightninigBoltsReady = minionSummonReady = cursedFireballReady = true;
     }
@@ -65,13 +65,13 @@ public class Aravos : Enemy
                 levelManager.currGolemCount++;
             }
 
-            /*for(int i = 0; i < 2; i++)
+            for(int i = 0; i < 2; i++)
             {
                 if (levelManager.currWraithCount >= levelManager.maxWraithCount) break;
-                GameObject spawn =Instantiate(wraith, new Vector3(1.452f, -2.885f, 0f), Quaternion.identity);
+                GameObject spawn =Instantiate(wraith, new Vector3(1.452f - i * 2f, -2.885f, 0f), Quaternion.identity);
                 spawn.GetComponent<Wraith>().lineOfSight *= 1000;
                 levelManager.currWraithCount++;
-            }*/
+            }
         
             yield return new WaitForSeconds(minionSummonCooldown);
 
@@ -100,15 +100,9 @@ public class Aravos : Enemy
         }
     }
 
-    public override void TakeDamage(float dmg)
-    {
-        base.TakeDamage(dmg);
-
-    }
-
     public override void Killed()
     {
-
+        base.Killed();
     }
 
 }

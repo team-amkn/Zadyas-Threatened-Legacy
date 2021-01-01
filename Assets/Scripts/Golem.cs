@@ -19,11 +19,7 @@ public class Golem : Enemy
         obj = this.gameObject;
         base.Start();
         ResetHealth();
-
-
-
         this.enemy = this.GetComponent<Transform>();
-        
         leftAreaBoundary = transform.position.x - patrolAreaRadius;
         rightAreaBoundary = transform.position.x + patrolAreaRadius;
         onPatrolMovingLeft = (Random.value > 0.5f);
@@ -96,11 +92,14 @@ void Update()
         }
     }
 
-    public override void TakeDamage(float dmg)
+    public override void Killed()
     {
-        base.TakeDamage(dmg);
-
+        base.Killed();
+        LevelManager3 levelManger = FindObjectOfType<LevelManager3>();
+        if (levelManger)
+        {
+            levelManger.currGolemCount--;
+        }
     }
 
-    
 }

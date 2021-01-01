@@ -7,8 +7,7 @@ public class Wraith : Enemy
 
     public Transform darkMagicalBallPoint;
     public GameObject projectile;
-    public float projectileCooldown;
-    public bool isProjectileOnCooldown;
+
 
 
     IEnumerator shootDarkMagicalball()
@@ -16,16 +15,19 @@ public class Wraith : Enemy
       while (true)
         {
             Instantiate(projectile, darkMagicalBallPoint.transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(projectileCooldown);
+            yield return new WaitForSeconds(basicAttackCooldown);
         }
         
     }
     // Start is called before the first frame update
     protected override void Start()
     {
+        obj = this.gameObject;
         base.Start();
+        ResetHealth();
         this.enemy = this.GetComponent<Transform>();
-        isProjectileOnCooldown = false;
+
+        isBasicAttackOnCooldown = false;
 
     }
 
@@ -37,26 +39,25 @@ public class Wraith : Enemy
             FacePlayer();
             // Shoot Cursed Fireall at player
             // TODO
-            if (!(isProjectileOnCooldown))
+            if (!(isBasicAttackOnCooldown))
             {
                 StartCoroutine(shootDarkMagicalball());
-                isProjectileOnCooldown =true;
+                isBasicAttackOnCooldown = true;
             }
             
         }
         
     }
 
-   
-    public override void TakeDamage(float dmg)
-    {
-        base.TakeDamage(dmg);
-    }
 
     public override void Killed()
     {
-
+        base.Killed();
+        LevelManager3 levelManger = FindObjectOfType<LevelManager3>();
+        if (levelManger)
+        {
+            levelManger.currWraithCount--;
+        }
     }
 
-     
 }

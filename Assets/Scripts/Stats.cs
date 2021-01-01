@@ -17,24 +17,19 @@ public class Stats : MonoBehaviour
     {
 
         health = Mathf.Clamp(health - dmg, 0, maxHealth);
-        
-            if(health == 0) Killed();
-        
-        Debug.Log("Health: " + health);
 
-
+        if (health == 0) Killed();
+        
     }
 
     public virtual void Killed()
     {
-        Debug.Log("Killed object: " + obj.name);
         Destroy(this.obj, 0f);
     }
 
     public virtual void InstantDeath()
     {
         TakeDamage(maxHealth);
-        Debug.Log("Instant death object: " + obj.name);
 
     }
 
@@ -47,7 +42,6 @@ public class Stats : MonoBehaviour
     public void ResetHealth()
     {
         health = maxHealth;
-        Debug.Log("init " + obj.name + " " + health);
     }
 
 

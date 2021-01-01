@@ -9,6 +9,8 @@ public class LevelManager3 : LevelManager
     // Start is called before the first frame update
     void Start()
     {
+        currGolemCount = 0;
+        currWraithCount = 0;
         LevelManager.CurrCheckPoint = intialCheckPoint;
     }
 

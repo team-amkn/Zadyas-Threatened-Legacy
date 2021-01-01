@@ -155,9 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  speed: 0
+  speed: 3
   distanceTravelled: 0
-  maximumTravelledDistance: 0
+  maximumTravelledDistance: 50
 --- !u!58 &8580439438655284458
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -211,4 +211,4 @@ MonoBehaviour:
   speed: 3
   distanceTravelled: 0
   maximumTravelledDistance: 8
-  target: {fileID: 0}
+  axel: {fileID: 0}

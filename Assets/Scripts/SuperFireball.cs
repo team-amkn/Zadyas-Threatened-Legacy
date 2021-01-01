@@ -15,32 +15,31 @@ public class SuperFireball : Projectile
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected override void LateUpdate()
     {
-        base.Update();
+        base.LateUpdate();
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Wraith")
         {
-            FindObjectOfType<Wraith>().InstantDeath();
+            other.GetComponentInParent<Wraith>().InstantDeath();
             Destroy(other.gameObject, .2f);
             enemiesCount++;
         }
         if (other.tag == "Golem")
         {
-            FindObjectOfType<Golem>().InstantDeath();
+            other.GetComponentInParent<Golem>().InstantDeath();
             Destroy(other.gameObject, .2f);
             enemiesCount++;
         }
 
-        if (other.tag == "Enemy")
+        if (other.tag == "Aravos")
         {
-
-            FindObjectOfType<Aravos>().TakeDamage(damage);
+            other.GetComponentInParent<Aravos>().InstantDeath();
             enemiesCount++;
-
         }
+
         if (enemiesCount >= 3)
         {
             Destroy(this.gameObject);
