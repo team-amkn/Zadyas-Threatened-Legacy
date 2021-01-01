@@ -67,10 +67,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6851628395957961848}
   - component: {fileID: 2518284221265430374}
-  - component: {fileID: 3519156745144563862}
   - component: {fileID: 4775563234990998710}
   - component: {fileID: 3035614353751820731}
   - component: {fileID: 3708247247368498718}
+  - component: {fileID: 4716920623941407452}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Golem
@@ -144,32 +144,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3519156745144563862
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5683997486451050028}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.30611408, y: -0.42305207}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9, y: 9}
-    newSize: {x: 9, y: 9}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.6313713, y: 5.1746154}
-  m_EdgeRadius: 0
 --- !u!50 &4775563234990998710
 Rigidbody2D:
   serializedVersion: 4
@@ -190,7 +164,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &3035614353751820731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,11 +179,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   maxHealth: 1
-  lineOfSight: 10
+  lineOfSight: 12
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
   scalePositiveWhenFacingRight: 1
-  maxSpeed: 5
+  basicAttackCooldown: 3
+  isBasicAttackOnCooldown: 0
+  maxSpeed: 3
   patrolAreaRadius: 10
   onPatrolMovingLeft: 0
 --- !u!61 &3708247247368498718
@@ -225,7 +201,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 2.2748666, y: -0.5683551}
+  m_Offset: {x: 2.1855292, y: -0.5683551}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -236,5 +212,31 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.402818, y: 4.8561897}
+  m_Size: {x: 1.3239837, y: 4.8561897}
+  m_EdgeRadius: 0
+--- !u!61 &4716920623941407452
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5683997486451050028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.35695517, y: -0.48389935}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 9, y: 9}
+    newSize: {x: 9, y: 9}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.548313, y: 5.0592647}
   m_EdgeRadius: 0

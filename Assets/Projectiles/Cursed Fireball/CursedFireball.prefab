@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 7401840601071848238}
   - component: {fileID: 7401840601071848239}
   - component: {fileID: 7401840601071848236}
+  - component: {fileID: -7355800323742626098}
+  - component: {fileID: 5767730027066859399}
+  - component: {fileID: -2363294062389578323}
   m_Layer: 0
   m_Name: CursedFireball
   m_TagString: Untagged
@@ -138,3 +141,77 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationDegree: 270
+--- !u!114 &-7355800323742626098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401840601071848237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801b6644650badd41976ee8411b811e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 5
+  distanceTravelled: 0
+  maximumTravelledDistance: 8
+  axel: {fileID: 0}
+--- !u!50 &5767730027066859399
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401840601071848237}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &-2363294062389578323
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7401840601071848237}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.12, y: 0.26999998}
+      - {x: -0.12, y: 0.26999998}
+      - {x: -0.24, y: 0.19999999}
+      - {x: -0.26999998, y: 0.12}
+      - {x: -0.26999998, y: -0.14}
+      - {x: -0.13, y: -0.26999998}
+      - {x: 0.099999994, y: -0.26999998}
+      - {x: 0.17, y: -0.25}
+      - {x: 0.26999998, y: -0.13}
+      - {x: 0.26999998, y: 0.089999996}
+      - {x: 0.25, y: 0.17999999}

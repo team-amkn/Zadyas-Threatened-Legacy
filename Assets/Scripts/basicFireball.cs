@@ -16,12 +16,13 @@ public class basicFireball : Projectile
         axel = FindObjectOfType<Player>().GetComponent<Transform>();
         sourceGameObject = axel;
         shootProjectile();
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
     }
 
     // Update is called once per frame
-    protected override void LateUpdate()
+    protected void FixedUpdate()
     {
-        base.LateUpdate();
+        this.calcDistance();
     }
 
 

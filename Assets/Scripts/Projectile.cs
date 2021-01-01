@@ -27,16 +27,11 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    protected virtual void LateUpdate()
-    {
-
-        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
-
+    protected void calcDistance() {
         if (this.transform == null) return;
         distanceTravelled = Mathf.Abs(this.transform.position.x - sourceGameObject.transform.position.x);
 
-        if (distanceTravelled > maximumTravelledDistance)
+        if (distanceTravelled >= maximumTravelledDistance)
         {
             Destroy(this.gameObject);
         }

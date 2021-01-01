@@ -10,7 +10,7 @@ public class Enemy : Stats
     public Transform enemy;
     public bool scalePositiveWhenFacingRight = true;
     public float basicAttackCooldown;
-    public bool isBasicAttackOnCooldown;
+    public bool isBasicAttackOnCooldown = false;
 
     // Start is called before the first frame update
     protected virtual void Start()

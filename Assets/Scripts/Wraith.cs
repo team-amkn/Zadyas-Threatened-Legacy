@@ -14,7 +14,7 @@ public class Wraith : Enemy
     {
       while (true)
         {
-            Instantiate(projectile, darkMagicalBallPoint.transform.position, Quaternion.identity);
+            Instantiate(projectile, darkMagicalBallPoint.position, darkMagicalBallPoint.rotation);
             yield return new WaitForSeconds(basicAttackCooldown);
         }
         

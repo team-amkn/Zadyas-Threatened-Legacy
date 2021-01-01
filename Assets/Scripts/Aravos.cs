@@ -9,8 +9,8 @@ public class Aravos : Enemy
     private LevelManager3 levelManager;
 
     private bool lightninigBoltsReady, minionSummonReady, cursedFireballReady;
-    public GameObject wraith, golem, lightning;
-    public Transform lightningTransform1, lightningTransform2, lightningTransform3, lightningTransform4;
+    public GameObject wraith, golem, lightning, cursedFireBall;
+    public Transform lightningTransform1, lightningTransform2, lightningTransform3, lightningTransform4, cursedBallPoint;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -29,7 +29,7 @@ public class Aravos : Enemy
     {
         FacePlayer();
 
-        if ( Health <= 0)
+        if (Health <= 0)
         {
             Killed();
         }
@@ -65,14 +65,17 @@ public class Aravos : Enemy
                 levelManager.currGolemCount++;
             }
 
-            for(int i = 0; i < 2; i++)
+
+            if (levelManager.currWraithCount == 0)
             {
-                if (levelManager.currWraithCount >= levelManager.maxWraithCount) break;
-                GameObject spawn =Instantiate(wraith, new Vector3(1.452f - i * 2f, -2.885f, 0f), Quaternion.identity);
-                spawn.GetComponent<Wraith>().lineOfSight *= 1000;
-                levelManager.currWraithCount++;
-            }
-        
+                Instantiate(wraith, new Vector3(this.transform.position.x - 1.8f, this.transform.position.y + 1f, this.transform.position.z), Quaternion.identity);
+                Instantiate(wraith, new Vector3(this.transform.position.x + 1.8f, this.transform.position.y + 1f, this.transform.position.z), Quaternion.identity);
+            };
+
+            //spawn.GetComponent<Wraith>().lineOfSight *= 1000;
+            levelManager.currWraithCount++;
+
+
             yield return new WaitForSeconds(minionSummonCooldown);
 
         }
@@ -83,7 +86,7 @@ public class Aravos : Enemy
     {
         while (true)
         {
-         ;
+            Instantiate(cursedFireBall, cursedBallPoint.position, cursedBallPoint.rotation);
             yield return new WaitForSeconds(cursedFireballCooldown);
         }
     }

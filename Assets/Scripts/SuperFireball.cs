@@ -15,9 +15,9 @@ public class SuperFireball : Projectile
     }
 
     // Update is called once per frame
-    protected override void LateUpdate()
+    protected void FixedUpdate()
     {
-        base.LateUpdate();
+        //base.FixedUpdate();
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
