@@ -103,7 +103,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 50
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1.2
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
   basicFireball: {fileID: 879647718545136020, guid: 2f8719a9f7cb6ed459d858e875d79490, type: 3}
   basicFireballKey: 13
   isbasicFireBallOnCooldown: 0
-  basicFireBallCooldown: 1
+  basicFireBallCooldown: 0
   basicFireBallTimer: 0
   superFireball: {fileID: 0}
   superFireballKey: 0
@@ -204,7 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fd3d172a1c00542b213ba86075b4e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  damage: 3
+  maxHealth: 5
   dashCoolDown: 0
   superFireBallCooldown: 0
   fireBallCooldown: 0
