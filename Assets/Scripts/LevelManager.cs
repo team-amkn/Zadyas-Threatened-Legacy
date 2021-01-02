@@ -5,8 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public GameObject intialCheckPoint;
-    protected Player player;
-    private PlayerStats playerStats;
+    protected PlayerStats playerStats;
     private static GameObject currCheckPoint;
 
     public static GameObject CurrCheckPoint { get => currCheckPoint; set => currCheckPoint = value; }
@@ -14,7 +13,6 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        player = FindObjectOfType<Player>();
         playerStats = FindObjectOfType<PlayerStats>();
     }
 
@@ -26,7 +24,7 @@ public class LevelManager : MonoBehaviour
 
     public void Respawn()
     {
-        player.transform.position = currCheckPoint.transform.position;
+        playerStats.transform.position = currCheckPoint.transform.position;
         playerStats.AddHealth(playerStats.maxHealth);
     }
 

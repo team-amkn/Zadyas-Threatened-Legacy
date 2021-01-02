@@ -10,6 +10,7 @@ public class LevelManager2 : LevelManager
         9.2f, 1.54f, 1.55f, 1.41f, 1.55f, 1.45f, 1.6f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.52f, 1.53f,
         1.45f, 1.55f};
     private int i = 0;
+    public float LightningXOffset;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -30,10 +31,10 @@ public class LevelManager2 : LevelManager
         while (true)
         {
             yield return new WaitForSeconds(lightningTiming[i]);
-            float startXRange = player.transform.position.x;
-            float endXRange = player.transform.position.x + 4f;
+            float startXRange = playerStats.transform.position.x;
+            float endXRange = playerStats.transform.position.x + LightningXOffset;
             float XSpawnPosition = Random.Range(startXRange, endXRange);
-            Vector3 spawnPosition = new Vector3(XSpawnPosition, player.transform.position.y, player.transform.position.z);
+            Vector3 spawnPosition = new Vector3(XSpawnPosition, 0.1f, 0f);
             Instantiate(lightning, spawnPosition, Quaternion.identity);
             i = ++i % lightningTiming.Length;
         }

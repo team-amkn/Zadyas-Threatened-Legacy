@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public float moveSpeed;
+    public float jumpMoveSpeed;
+    private float speed;
     public float jumpHeight;
     public bool isFacingRight;
     bool isTeleporting = false;
@@ -130,9 +132,16 @@ public class Player : MonoBehaviour {
         }
         anim.SetBool("Grounded", grounded);
 
+        if (!grounded) {
+            speed = jumpMoveSpeed;
+        }
+        else {
+            speed = moveSpeed;
+        }
+
         if (Input.GetKey(L))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
             if (isFacingRight)
             {
                 flip();
@@ -142,7 +151,7 @@ public class Player : MonoBehaviour {
 
         if(Input.GetKey(R))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, GetComponent<Rigidbody2D>().velocity.y);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
 
             if (!isFacingRight)
             {
