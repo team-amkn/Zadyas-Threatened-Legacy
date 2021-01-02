@@ -4,16 +4,39 @@ using UnityEngine;
 
 public class LevelManager2 : LevelManager
 {
+    public GameObject lightning;
+    private float[] lightningTiming = {26.50f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.55f,
+        1.55f, 1.48f, 1.52f, 1.51f, 1.51f, 1.58f, 1.44f, 1.51f, 1.5f, 1.51f, 1.51f, 1.52f, 1.51f,
+        9.2f, 1.54f, 1.55f, 1.41f, 1.55f, 1.45f, 1.6f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.52f, 1.53f,
+        1.45f, 1.55f};
+    private int i = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         LevelManager.CurrCheckPoint = intialCheckPoint;
+        StartCoroutine(SummonLightning());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    IEnumerator SummonLightning()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(lightningTiming[i]);
+            float startXRange = player.transform.position.x;
+            float endXRange = player.transform.position.x + 4f;
+            float XSpawnPosition = Random.Range(startXRange, endXRange);
+            Vector3 spawnPosition = new Vector3(XSpawnPosition, player.transform.position.y, player.transform.position.z);
+            Instantiate(lightning, spawnPosition, Quaternion.identity);
+            i = ++i % lightningTiming.Length;
+        }
+    }
+
 }

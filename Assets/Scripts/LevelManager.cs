@@ -5,14 +5,14 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public GameObject intialCheckPoint;
-    private Player player;
+    protected Player player;
     private PlayerStats playerStats;
     private static GameObject currCheckPoint;
 
     public static GameObject CurrCheckPoint { get => currCheckPoint; set => currCheckPoint = value; }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         player = FindObjectOfType<Player>();
         playerStats = FindObjectOfType<PlayerStats>();
