@@ -26,37 +26,31 @@ public class Player : MonoBehaviour {
     public Transform  shootingPoint;
     public GameObject basicFireball;
     public KeyCode basicFireballKey;
-    public bool isbasicFireBallOnCooldown;
-    public float basicFireBallCooldown;
-    public float basicFireBallTimer;
-
 
     //Shooting super fireball
     public GameObject superFireball;
     public KeyCode superFireballKey;
-    public bool isSuperFireBallOnCooldown;
-    public float superFireBallCooldown;
-    public float superFireBallTimer;
 
+    private PlayerStats playerStats;
 
-    public float dashCooldown;
-    public float dashTimer;
-    public bool isDashOnCooldown;
 
     // Use this for initialization
     void Start ()
     {
+        playerStats = this.GetComponent<PlayerStats>();
+
+
         isFacingRight = true;
         anim = GetComponent<Animator>();
- 
-        basicFireBallTimer = 0;
-        isbasicFireBallOnCooldown = false;
 
-        superFireBallTimer = 0;
-        isSuperFireBallOnCooldown = false;
+        playerStats.BasicFireBallTimer = 0f;
+        playerStats.isbasicFireBallOnCooldown = false;
 
-        dashTimer = 0f;
-        isDashOnCooldown = false;
+        playerStats.SuperFireBallTimer = 0f;
+        playerStats.isSuperFireBallOnCooldown = false;
+
+        playerStats.DashTimer = 0f;
+        playerStats.isDashOnCooldown = false;
 
     }
 
@@ -77,62 +71,62 @@ public class Player : MonoBehaviour {
     public void shootBasicFireBall()
     {
         Instantiate(basicFireball, shootingPoint.position, shootingPoint.rotation);
-        isbasicFireBallOnCooldown = true;
+        playerStats.isbasicFireBallOnCooldown = true;
     }
 
     public void shootSuperFireball()
     {
         Instantiate(superFireball, shootingPoint.position, shootingPoint.rotation);
-        isSuperFireBallOnCooldown = true;
+        playerStats.isSuperFireBallOnCooldown = true;
     }
     // Update is called once per frame
     void Update () {
         //shooting basic fireball
-        if (Input.GetKeyDown(basicFireballKey) && !isbasicFireBallOnCooldown)
+        if (Input.GetKeyDown(basicFireballKey) && !playerStats.isbasicFireBallOnCooldown)
         {
             shootBasicFireBall();
         }     
         //start cooldown timer for basic fireball
-        if (isbasicFireBallOnCooldown)
+        if (playerStats.isbasicFireBallOnCooldown)
         {
-            basicFireBallTimer+= Time.deltaTime;
-            if(basicFireBallTimer >= basicFireBallCooldown)
+            playerStats.BasicFireBallTimer += Time.deltaTime;
+            if(playerStats.BasicFireBallTimer >= playerStats.basicFireBallCooldown)
             {
-                isbasicFireBallOnCooldown = false;
-                basicFireBallTimer = 0;
+                playerStats.isbasicFireBallOnCooldown = false;
+                playerStats.BasicFireBallTimer = 0;
             }
         }
 
         //shooting super fireball
-        if (Input.GetKeyDown(superFireballKey) && !isSuperFireBallOnCooldown)
+        if (Input.GetKeyDown(superFireballKey) && !playerStats.isSuperFireBallOnCooldown)
         {
             shootSuperFireball();
         }
-        if (isSuperFireBallOnCooldown)
+        if (playerStats.isSuperFireBallOnCooldown)
         {
-            superFireBallTimer += Time.deltaTime;
-            if (superFireBallTimer >= superFireBallCooldown)
+            playerStats.SuperFireBallTimer += Time.deltaTime;
+            if (playerStats.SuperFireBallTimer >= playerStats.superFireBallCooldown)
             {
-                isbasicFireBallOnCooldown = false;
-                basicFireBallTimer = 0;
+                playerStats.isSuperFireBallOnCooldown = false;
+                playerStats.SuperFireBallTimer = 0;
             }
         }
 
         if (Input.GetKey(Teleport) && !isTeleporting)
         {
-            if (!isDashOnCooldown)
+            if (!playerStats.isDashOnCooldown)
             {
                 isTeleporting = true;
-                isDashOnCooldown = true;
+                playerStats.isDashOnCooldown = true;
             }
         }
-        if (isDashOnCooldown)
+        if (playerStats.isDashOnCooldown)
         {
-            dashTimer += Time.deltaTime;
-            if (dashTimer >= dashCooldown)
+            playerStats.DashTimer += Time.deltaTime;
+            if (playerStats.DashTimer >= playerStats.dashCooldown)
             {
-                isDashOnCooldown = false;
-                dashTimer = 0f;
+                playerStats.isDashOnCooldown = false;
+                playerStats.DashTimer = 0f;
             }
         }
         //start cooldown timer for super fireball
@@ -140,7 +134,6 @@ public class Player : MonoBehaviour {
         if (isTeleporting) {
             teleportTime += Time.deltaTime;
             if (teleportTime >= teleportDuration) {
-                //COOLDOWN //TODOOOOO
                 float new_x;
                 isTeleporting = false;
                 if (isFacingRight) 
@@ -197,6 +190,5 @@ public class Player : MonoBehaviour {
 
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
-        
 	}
 }

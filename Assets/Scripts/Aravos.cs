@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Aravos : Enemy
 {
+    public float HP;
 
     public float lightninigBoltsCooldown, minionSummonCooldown, cursedFireballCooldown;
     private LevelManager3 levelManager;
@@ -15,9 +16,7 @@ public class Aravos : Enemy
     // Start is called before the first frame update
     protected override void Start()
     {
-        obj = this.gameObject;
         base.Start();
-        ResetHealth();
         this.enemy = this.GetComponent<Transform>();
 
         levelManager = FindObjectOfType<LevelManager3>();
@@ -29,23 +28,17 @@ public class Aravos : Enemy
     {
         FacePlayer();
 
-        if (Health <= 0)
+        if (HP <= 100 && cursedFireballReady)
         {
-            Killed();
-        }
-
-        if (Health <= 100 && cursedFireballReady)
-        {
-
             StartCoroutine(FireCursedFireball());
             cursedFireballReady = false;
         }
-        if (Health <= 75 && minionSummonReady)
+        if (HP <= 75 && minionSummonReady)
         {
             StartCoroutine(SummonMinions());
             minionSummonReady = false;
         }
-        if (Health <= 25 && lightninigBoltsReady)
+        if (HP <= 25 && lightninigBoltsReady)
         {
             StartCoroutine(SummonLightningBolts());
             lightninigBoltsReady = false;
@@ -55,29 +48,22 @@ public class Aravos : Enemy
 
     IEnumerator SummonMinions()
     {
-
         while (true)
         {
             if (levelManager.currGolemCount < levelManager.maxGolemsCount)
             {
                 GameObject spawn = Instantiate(golem, new Vector3(-5.47f, -3.49f, 0f), Quaternion.identity);
-                spawn.GetComponent<Golem>().lineOfSight *= 1000;
                 levelManager.currGolemCount++;
             }
-
 
             if (levelManager.currWraithCount == 0)
             {
                 Instantiate(wraith, new Vector3(this.transform.position.x - 1.8f, this.transform.position.y + 1f, this.transform.position.z), Quaternion.identity);
                 Instantiate(wraith, new Vector3(this.transform.position.x + 1.8f, this.transform.position.y + 1f, this.transform.position.z), Quaternion.identity);
+                levelManager.currWraithCount += 2;
             };
 
-            //spawn.GetComponent<Wraith>().lineOfSight *= 1000;
-            levelManager.currWraithCount++;
-
-
             yield return new WaitForSeconds(minionSummonCooldown);
-
         }
 
     }
@@ -86,7 +72,9 @@ public class Aravos : Enemy
     {
         while (true)
         {
-            Instantiate(cursedFireBall, cursedBallPoint.position, cursedBallPoint.rotation);
+            GameObject obj = Instantiate(cursedFireBall, cursedBallPoint.position, cursedBallPoint.rotation);
+            obj.GetComponent<DarkMagicalProjectile>().SourceGameObject = this.transform;
+            obj.GetComponent<DarkMagicalProjectile>().SourcePosition = this.transform.position;
             yield return new WaitForSeconds(cursedFireballCooldown);
         }
     }
@@ -103,9 +91,16 @@ public class Aravos : Enemy
         }
     }
 
-    public override void Killed()
+    public void TakeDamage(float damage)
     {
-        base.Killed();
+        HP -= damage;
+
+        if (HP <= 0)
+        {
+            //Play Death Animation
+            Destroy(this.gameObject);
+            //Shoof hata3mel eh tany lamma ymoot
+        }
     }
 
 }

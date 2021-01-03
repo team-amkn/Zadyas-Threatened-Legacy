@@ -6,9 +6,13 @@ public class Projectile : MonoBehaviour
 {
     public float damage;
     public float speed;
-    protected Transform sourceGameObject;
-    public float distanceTravelled;
+    private Transform sourceGameObject;
+    protected float distanceTravelled;
     public float maximumTravelledDistance;
+    private Vector3 sourcePosition;
+
+    public Transform SourceGameObject { get => sourceGameObject; set => sourceGameObject = value; }
+    public Vector3 SourcePosition { get => sourcePosition; set => sourcePosition = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -16,20 +20,20 @@ public class Projectile : MonoBehaviour
 
     }
 
-    protected void shootProjectile()
+    protected virtual void shootProjectile()
     {
-
-        if (sourceGameObject.transform.localScale.x < 0)
+        if (SourceGameObject.transform.localScale.x < 0)
         {
-            speed = -speed; // 
+            speed = -speed;
             this.transform.localScale = new Vector3(-(this.transform.localScale.x),
                                                  this.transform.localScale.y, this.transform.localScale.z);
         }
     }
 
-    protected void calcDistance() {
+    protected virtual void calculateTravelDistance()
+    {
         if (this.transform == null) return;
-        distanceTravelled = Mathf.Abs(this.transform.position.x - sourceGameObject.transform.position.x);
+        distanceTravelled = Mathf.Abs(this.transform.position.x - sourcePosition.x);
 
         if (distanceTravelled >= maximumTravelledDistance)
         {

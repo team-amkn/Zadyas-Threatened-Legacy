@@ -4,10 +4,9 @@ using UnityEngine;
 
 
 
-public class Golem : Enemy
+public class Golem : Minion
 {
-
-    public float maxSpeed = 3f;
+    public float damage;
     public float patrolAreaRadius;
     private float leftAreaBoundary, rightAreaBoundary;
     public bool onPatrolMovingLeft;
@@ -16,9 +15,7 @@ public class Golem : Enemy
     // Start is called before the first frame update
     protected override void Start()
     {
-        obj = this.gameObject;
         base.Start();
-        ResetHealth();
         Physics2D.IgnoreCollision(playerStats.GetComponent<BoxCollider2D>(), GetComponents<BoxCollider2D>()[1]);
         this.enemy = this.GetComponent<Transform>();
         leftAreaBoundary = transform.position.x - patrolAreaRadius;
@@ -34,14 +31,13 @@ public class Golem : Enemy
             FacePlayer();
             if (this.transform.position.x > playerStats.transform.position.x)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerStats.transform.position.x + 0.4f, transform.position.y, transform.position.z), maxSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerStats.transform.position.x + 0.4f, transform.position.y, transform.position.z), speed * Time.deltaTime);
             }
             else {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerStats.transform.position.x - 0.4f, transform.position.y, transform.position.z), maxSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerStats.transform.position.x - 0.4f, transform.position.y, transform.position.z), speed * Time.deltaTime);
             }
             wasChasingPlayer = true;
         }
-
         else
         {
             Patrol();
@@ -50,16 +46,14 @@ public class Golem : Enemy
 
     IEnumerator AttackTimer()
     {
-        while (isBasicAttackOnCooldown)
+        while (isAttackOnCooldown)
         {
-            yield return new WaitForSeconds(basicAttackCooldown);
-            isBasicAttackOnCooldown = false; //To stop couroutine
+            yield return new WaitForSeconds(attackCooldown);
+            isAttackOnCooldown = false; //To stop couroutine
             GetComponent<BoxCollider2D>().enabled = true;
-            Debug.Log("BECOME NOT ON COOLDOWN");
         }
 
     }
-
 
     void Patrol()
     {
@@ -89,23 +83,21 @@ public class Golem : Enemy
         {
             x_movment = rightAreaBoundary;
         }
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(x_movment, transform.position.y, transform.position.z), maxSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(x_movment, transform.position.y, transform.position.z), speed * Time.deltaTime);
         transform.localScale = new Vector3(x_scale, transform.localScale.y, transform.localScale.z);
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            if (!isBasicAttackOnCooldown)
+            if (!isAttackOnCooldown)
             {
                 //Play attack animation
-                isBasicAttackOnCooldown = true;
+                isAttackOnCooldown = true;
                 GetComponent<BoxCollider2D>().enabled = false;
                 StartCoroutine(AttackTimer());
                 playerStats.TakeDamage(damage);
-                Debug.Log("Axel Health: " + playerStats.Health);
             }
         }
     }
@@ -119,9 +111,9 @@ public class Golem : Enemy
         }
     }
 
-    public override void Killed()
+    public override void die()
     {
-        base.Killed();
+        base.die();
         LevelManager3 levelManger = FindObjectOfType<LevelManager3>();
         if (levelManger)
         {

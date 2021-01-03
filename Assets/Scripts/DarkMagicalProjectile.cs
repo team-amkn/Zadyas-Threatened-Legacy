@@ -10,20 +10,18 @@ public class DarkMagicalProjectile : Projectile
 
     void Start()
     {
-        
         axel = FindObjectOfType<Player>().GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = ((axel.position - this.transform.position).normalized) * speed;
     }
     // Update is called once per frame
-    protected void FixedUpdate()
+    protected void Update()
     {
-
         if (transform.position.x == target.x && transform.position.y == target.y)
         {
             Destroy(this.gameObject, 0.1f);
         }
-
+        calculateTravelDistance();
     }
     void OnTriggerEnter2D(Collider2D other)
     {

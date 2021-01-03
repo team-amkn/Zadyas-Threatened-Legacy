@@ -40,9 +40,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4537411474130649292}
   - component: {fileID: 4537411474130649291}
-  - component: {fileID: 4504700667629449223}
   - component: {fileID: 1159303322}
   - component: {fileID: 23265592}
+  - component: {fileID: 7358510027837622265}
   m_Layer: 0
   m_Name: Wraith
   m_TagString: Wraith
@@ -116,28 +116,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4504700667629449223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4537411474130649290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e02110dc966c84145a3e48d84eccc97b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  maxHealth: 1
-  lineOfSight: 12
-  playerStats: {fileID: 0}
-  enemy: {fileID: 0}
-  scalePositiveWhenFacingRight: 1
-  basicAttackCooldown: 3
-  isBasicAttackOnCooldown: 0
-  darkMagicalBallPoint: {fileID: 452474110}
-  projectile: {fileID: 4759881236509376049, guid: bec5e078f85a7964d92b2d5595b6d2ab, type: 3}
 --- !u!50 &1159303322
 Rigidbody2D:
   serializedVersion: 4
@@ -185,3 +163,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.73246795, y: 2.6639175}
   m_EdgeRadius: 0
+--- !u!114 &7358510027837622265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4537411474130649290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e02110dc966c84145a3e48d84eccc97b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  attackCooldown: 3
+  lineOfSight: 5
+  darkMagicalBallPoint: {fileID: 452474110}
+  projectile: {fileID: 4759881236509376049, guid: bec5e078f85a7964d92b2d5595b6d2ab, type: 3}

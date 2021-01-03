@@ -6,25 +6,54 @@ public class basicFireball : Projectile
 {
 
     private Transform axel;
-    private bool hasCollided;
 
-    //private bool hasCollided = false;
+    private bool hasCollided = false;
 
     void Start()
     {
-        hasCollided = false;
         axel = FindObjectOfType<Player>().GetComponent<Transform>();
-        sourceGameObject = axel;
+        SourceGameObject = axel;
         shootProjectile();
-        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
+    }
+
+    protected override void shootProjectile()
+    {
+        
+        Vector3 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+        if (axel.position.x < worldPosition.x)
+        {
+            axel.GetComponent<Player>().isFacingRight = true;
+            axel.localScale = new Vector3(Mathf.Abs(axel.localScale.x), axel.localScale.y, axel.localScale.z);
+        }
+        else
+        {
+            axel.GetComponent<Player>().isFacingRight = false;
+            axel.localScale = new Vector3(-Mathf.Abs(axel.localScale.x), axel.localScale.y, axel.localScale.z);
+        }
+        Vector3 direction = (worldPosition - this.transform.position);
+        direction.Normalize();
+        GetComponent<Rigidbody2D>().velocity = direction * speed;
+        Quaternion newRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        this.transform.rotation = newRotation;
     }
 
     // Update is called once per frame
     protected void FixedUpdate()
     {
-        this.calcDistance();
+        this.calculateTravelDistance();
     }
 
+    protected override void calculateTravelDistance()
+    {
+        if (this.transform == null) return;
+        distanceTravelled = Mathf.Abs(this.transform.position.x - SourceGameObject.transform.position.x);
+
+        if (distanceTravelled >= maximumTravelledDistance)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -35,14 +64,14 @@ public class basicFireball : Projectile
 
         if (other.tag == "Wraith")
         {
-            other.GetComponent<Wraith>().InstantDeath();
+            other.GetComponent<Wraith>().die();
             Destroy(this.gameObject, 0f);
             this.hasCollided = true;
 
         }
         else if (other.tag == "GolemHitbox")
         {
-            other.GetComponentInParent<Golem>().InstantDeath();
+            other.GetComponentInParent<Golem>().die();
             Destroy(this.gameObject, 0f);
             this.hasCollided = true;
         }
@@ -59,5 +88,4 @@ public class basicFireball : Projectile
             this.hasCollided = true;
         }
     }
-
 }

@@ -177,16 +177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98927c5e167e22489a46eac5f5c0344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
+  attackCooldown: 3
+  lineOfSight: 8
   damage: 1
-  maxHealth: 1
-  lineOfSight: 12
-  playerStats: {fileID: 0}
-  enemy: {fileID: 0}
-  scalePositiveWhenFacingRight: 1
-  basicAttackCooldown: 3
-  isBasicAttackOnCooldown: 0
-  maxSpeed: 3
-  patrolAreaRadius: 10
+  patrolAreaRadius: 3
   onPatrolMovingLeft: 0
 --- !u!61 &3708247247368498718
 BoxCollider2D:

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BigMonster : Enemy
 {
-    public float maxSpeed = 1f;
     public Transform mouth;
     // Start is called before the first frame update
     protected override void Start()
@@ -22,7 +21,7 @@ public class BigMonster : Enemy
         Vector3 target = new Vector3(playerStats.transform.position.x, playerStats.transform.position.y, playerStats.transform.position.z);
         // Make sure frog doesn't sink deeper than ground
         //if (target.y < -1.55f) target.y = -1.55f;
-        transform.position = Vector3.MoveTowards(transform.position, target, maxSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

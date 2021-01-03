@@ -10,7 +10,7 @@ public class BigMonsterProjectile : Projectile
     void Start()
     {
         bigMonster = FindObjectOfType<BigMonster>().GetComponent<Transform>();
-        sourceGameObject = bigMonster;
+        SourceGameObject = bigMonster;
         target = FindObjectOfType<Player>().GetComponent<Transform>();
         shootProjectile();
     }
