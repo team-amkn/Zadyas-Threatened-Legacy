@@ -18,20 +18,24 @@ public class BigMonster : Enemy
     void Update()
     {
         FacePlayer();
-        // Moves on X-Axis only
-        //transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerStats.transform.position.x, transform.position.y, transform.position.z), maxSpeed * Time.deltaTime);
 
-        //Follows player in air
-        transform.position = Vector3.MoveTowards(transform.position, playerStats.transform.position, maxSpeed * Time.deltaTime);
+        Vector3 target = new Vector3(playerStats.transform.position.x, playerStats.transform.position.y, playerStats.transform.position.z);
+        // Make sure frog doesn't sink deeper than ground
+        //if (target.y < -1.55f) target.y = -1.55f;
+        transform.position = Vector3.MoveTowards(transform.position, target, maxSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            FindObjectOfType<PlayerStats>().InstantDeath();
+            playerStats.InstantDeath();
         }
     }
- 
-    
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag != "Ground")
+            Physics2D.IgnoreCollision(collision.otherCollider, collision.collider);
+    }
 }

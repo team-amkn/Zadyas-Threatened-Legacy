@@ -7,11 +7,13 @@ public class LevelManager3 : LevelManager
     public int maxGolemsCount, maxWraithCount;
     public int currGolemCount, currWraithCount;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         currGolemCount = 0;
         currWraithCount = 0;
         LevelManager.CurrCheckPoint = intialCheckPoint;
+        LevelManager.leftLevelBoundary = -9.29f;
+        LevelManager.rightLevelBoundary = 5.83f;
     }
 
     // Update is called once per frame

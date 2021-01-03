@@ -16,6 +16,8 @@ public class LevelManager2 : LevelManager
     protected override void Start()
     {
         base.Start();
+        LevelManager.leftLevelBoundary = -4.83f;
+        LevelManager.rightLevelBoundary = 203.13f;
         LevelManager.CurrCheckPoint = intialCheckPoint;
         StartCoroutine(SummonLightning());
     }

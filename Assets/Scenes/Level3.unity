@@ -3475,7 +3475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  maxHealth: 22
+  maxHealth: 100
   lineOfSight: 0
   playerStats: {fileID: 0}
   enemy: {fileID: 0}
@@ -5842,6 +5842,10 @@ PrefabInstance:
     - target: {fileID: 6387428703214002520, guid: 6326da44f5808604f8e3b9066007cbce, type: 3}
       propertyPath: m_Name
       value: Axel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387428703214002521, guid: 6326da44f5808604f8e3b9066007cbce, type: 3}
+      propertyPath: dashCooldown
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6387428703214002853, guid: 6326da44f5808604f8e3b9066007cbce, type: 3}
       propertyPath: m_RootOrder

@@ -103,7 +103,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 50
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 1.2
   m_Material: {fileID: 0}
   m_Interpolate: 1
@@ -123,7 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  jumpHeight: 7
+  jumpMoveSpeed: 5.5
+  jumpHeight: 7.8
   isFacingRight: 0
   teleportDuration: 0.43
   transportDistance: 5
@@ -147,6 +148,9 @@ MonoBehaviour:
   isSuperFireBallOnCooldown: 0
   superFireBallCooldown: 0
   superFireBallTimer: 0
+  dashCooldown: 5
+  dashTimer: 0
+  isDashOnCooldown: 0
 --- !u!95 &6387428703214002850
 Animator:
   serializedVersion: 3

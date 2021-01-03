@@ -38,6 +38,11 @@ public class Player : MonoBehaviour {
     public float superFireBallCooldown;
     public float superFireBallTimer;
 
+
+    public float dashCooldown;
+    public float dashTimer;
+    public bool isDashOnCooldown;
+
     // Use this for initialization
     void Start ()
     {
@@ -49,6 +54,9 @@ public class Player : MonoBehaviour {
 
         superFireBallTimer = 0;
         isSuperFireBallOnCooldown = false;
+
+        dashTimer = 0f;
+        isDashOnCooldown = false;
 
     }
 
@@ -100,11 +108,6 @@ public class Player : MonoBehaviour {
         {
             shootSuperFireball();
         }
-
-        if (Input.GetKey(Teleport) && !isTeleporting) {
-            isTeleporting = true;
-        }
-        //start cooldown timer for super fireball
         if (isSuperFireBallOnCooldown)
         {
             superFireBallTimer += Time.deltaTime;
@@ -114,14 +117,46 @@ public class Player : MonoBehaviour {
                 basicFireBallTimer = 0;
             }
         }
+
+        if (Input.GetKey(Teleport) && !isTeleporting)
+        {
+            if (!isDashOnCooldown)
+            {
+                isTeleporting = true;
+                isDashOnCooldown = true;
+            }
+        }
+        if (isDashOnCooldown)
+        {
+            dashTimer += Time.deltaTime;
+            if (dashTimer >= dashCooldown)
+            {
+                isDashOnCooldown = false;
+                dashTimer = 0f;
+            }
+        }
+        //start cooldown timer for super fireball
+
         if (isTeleporting) {
             teleportTime += Time.deltaTime;
             if (teleportTime >= teleportDuration) {
                 //COOLDOWN //TODOOOOO
+                float new_x;
                 isTeleporting = false;
-                this.transform.position = isFacingRight ? new Vector3(this.transform.position.x + transportDistance, this.transform.position.y, this.transform.position.z) : new Vector3(this.transform.position.x - transportDistance, this.transform.position.y, this.transform.position.z);
+                if (isFacingRight) 
+                {
+                    new_x = this.transform.position.x + transportDistance;
+                }
+                else 
+                {
+                    new_x = this.transform.position.x - transportDistance;
+                }
+                if (new_x > LevelManager.rightLevelBoundary) new_x = LevelManager.rightLevelBoundary;
+                if (new_x < LevelManager.leftLevelBoundary) new_x = LevelManager.leftLevelBoundary;
+
+                this.transform.position = new Vector3(new_x, this.transform.position.y, this.transform.position.z);
                 teleportTime = 0;
-            }
+                }
         }
         anim.SetBool("isTeleporting", isTeleporting);
 

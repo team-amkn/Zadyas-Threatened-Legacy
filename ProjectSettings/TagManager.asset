@@ -13,6 +13,7 @@ TagManager:
   - Wraith
   - basicFireball
   - GolemHitbox
+  - Ground
   layers:
   - Default
   - TransparentFX
