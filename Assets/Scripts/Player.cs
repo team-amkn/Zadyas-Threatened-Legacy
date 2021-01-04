@@ -216,7 +216,7 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        IsWallCollision = false;
+        if (collision.gameObject.tag == "Platform") IsWallCollision = false;
 
     }
 

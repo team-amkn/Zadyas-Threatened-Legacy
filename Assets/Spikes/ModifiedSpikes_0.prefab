@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4970583045053372745}
   - component: {fileID: 8880674439984903854}
   - component: {fileID: -6672382121834619696}
+  - component: {fileID: 601835302}
   m_Layer: 0
   m_Name: ModifiedSpikes_0
   m_TagString: Untagged
@@ -124,3 +125,15 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &601835302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628453295535987603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530f2577838a5374d8a709f3d9f70a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
