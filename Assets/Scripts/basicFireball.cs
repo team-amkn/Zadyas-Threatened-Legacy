@@ -19,8 +19,8 @@ public class basicFireball : Projectile
     protected override void shootProjectile()
     {
         
-        Vector3 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+        Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
         if (axel.position.x < worldPosition.x)
         {
             axel.GetComponent<Player>().isFacingRight = true;
@@ -31,7 +31,7 @@ public class basicFireball : Projectile
             axel.GetComponent<Player>().isFacingRight = false;
             axel.localScale = new Vector3(-Mathf.Abs(axel.localScale.x), axel.localScale.y, axel.localScale.z);
         }
-        Vector3 direction = (worldPosition - this.transform.position);
+        Vector2 direction = (worldPosition - (Vector2) this.transform.position);
         direction.Normalize();
         GetComponent<Rigidbody2D>().velocity = direction * speed;
         Quaternion newRotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
