@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.2
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -123,15 +123,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  jumpMoveSpeed: 5.5
-  jumpHeight: 7.8
+  jumpMoveSpeed: 6.5
+  jumpHeight: 13
   isFacingRight: 0
   teleportDuration: 0.43
   transportDistance: 5
   Spacebar: 32
   L: 97
   R: 100
-  Teleport: 116
+  Teleport: 304
   groundCheck: {fileID: 1048982895617258313}
   groundCheckRadius: 0.65
   whatIsGround:
@@ -142,6 +142,7 @@ MonoBehaviour:
   basicFireballKey: 323
   superFireball: {fileID: 3757864417241564997, guid: 26272ec43bf066d458d1b3415c768003, type: 3}
   superFireballKey: 324
+  isWallCollision: 0
 --- !u!95 &1688135306145678467
 Animator:
   serializedVersion: 3
@@ -230,7 +231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7447652470301200322}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.954, y: -2.422, z: 0}
+  m_LocalPosition: {x: 0.357, y: -2.422, z: 0}
   m_LocalScale: {x: 1.1041226, y: 1.1041226, z: 1.1041226}
   m_Children: []
   m_Father: {fileID: 2187867729762664601}
@@ -260,7 +261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8673549671614582958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.262, y: 0.995, z: 0}
+  m_LocalPosition: {x: 1.429, y: 1.757, z: 0}
   m_LocalScale: {x: 0.6986198, y: 0.6986198, z: 0.6986198}
   m_Children: []
   m_Father: {fileID: 2187867729762664601}

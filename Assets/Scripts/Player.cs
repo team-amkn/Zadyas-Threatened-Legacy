@@ -33,6 +33,9 @@ public class Player : MonoBehaviour {
 
     private PlayerStats playerStats;
 
+    public bool isWallCollision;
+    public bool IsWallCollision { get => isWallCollision; set => isWallCollision = value; }
+
 
     // Use this for initialization
     void Start ()
@@ -51,6 +54,8 @@ public class Player : MonoBehaviour {
 
         playerStats.DashTimer = 0f;
         playerStats.isDashOnCooldown = false;
+
+        IsWallCollision = false;
 
     }
 
@@ -81,6 +86,8 @@ public class Player : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
+
+
         //shooting basic fireball
         if (Input.GetKeyDown(basicFireballKey) && !playerStats.isbasicFireBallOnCooldown)
         {
@@ -158,6 +165,7 @@ public class Player : MonoBehaviour {
         {
             Jump();
         }
+
         anim.SetBool("Grounded", grounded);
 
         if (!grounded) {
@@ -167,7 +175,7 @@ public class Player : MonoBehaviour {
             speed = moveSpeed;
         }
 
-        if (Input.GetKey(L))
+        if (Input.GetKey(L) && !IsWallCollision)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
             if (isFacingRight)
@@ -177,7 +185,7 @@ public class Player : MonoBehaviour {
             }   
         }
 
-        if(Input.GetKey(R))
+        if(Input.GetKey(R)&&!IsWallCollision)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
 
@@ -188,7 +196,28 @@ public class Player : MonoBehaviour {
             }
         }
 
+        if (GetComponent<Rigidbody2D>().velocity.y == 0) isWallCollision = false;
+
         anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
 
 	}
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+        if (collision.gameObject.tag == "Platform" && rb.velocity.y != 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -100f);
+            IsWallCollision = true;
+        }
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        IsWallCollision = false;
+
+    }
+
 }

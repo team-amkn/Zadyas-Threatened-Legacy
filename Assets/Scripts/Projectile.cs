@@ -14,11 +14,6 @@ public class Projectile : MonoBehaviour
     public Transform SourceGameObject { get => sourceGameObject; set => sourceGameObject = value; }
     public Vector3 SourcePosition { get => sourcePosition; set => sourcePosition = value; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     protected virtual void shootProjectile()
     {

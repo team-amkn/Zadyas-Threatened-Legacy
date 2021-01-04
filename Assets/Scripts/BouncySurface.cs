@@ -5,6 +5,7 @@ using UnityEngine;
 public class BouncySurface : MonoBehaviour
 {
     private Player player;
+    public float jumpHeight = 18f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +20,8 @@ public class BouncySurface : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player") {
-            player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 12);
+            player.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
         }    
     }
 
-    void Update()
-    {
-        
-    }
 }
