@@ -208,7 +208,7 @@ public class Player : MonoBehaviour {
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
         if (collision.gameObject.tag == "Platform" && rb.velocity.y != 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, -100f);
+            rb.velocity = new Vector2(rb.velocity.x, -5f);
             IsWallCollision = true;
         }
 
