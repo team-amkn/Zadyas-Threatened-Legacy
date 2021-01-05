@@ -9,8 +9,12 @@ public class HealthPickup : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerStats>().AddHealth(health);
-            Destroy(this.gameObject, 0.1f);
+            PlayerStats playerStats = other.GetComponent<PlayerStats>();
+            if (playerStats.Health < playerStats.maxHealth)
+            {
+                playerStats.AddHealth(health);
+                Destroy(this.gameObject, 0.1f); 
+            }
         }
     }
 }

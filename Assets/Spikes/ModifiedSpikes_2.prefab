@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 506210576008229226}
   - component: {fileID: 4879858052413354936}
   - component: {fileID: -8127068095229183052}
-  - component: {fileID: 838691878}
-  - component: {fileID: 1079559396}
   - component: {fileID: 7962894250395890317}
+  - component: {fileID: 1753496108}
   m_Layer: 0
   m_Name: ModifiedSpikes_2
   m_TagString: Untagged
@@ -127,30 +126,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &838691878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5460193132104443980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 530f2577838a5374d8a709f3d9f70a7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1079559396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5460193132104443980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 530f2577838a5374d8a709f3d9f70a7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &7962894250395890317
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +135,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 5460193132104443980}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 128c861c9c18f5e4f9d9fde539bf8df3, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -399,3 +374,15 @@ PolygonCollider2D:
       - {x: -1.41, y: -4.0394783}
       - {x: -1.31, y: -3.9594784}
       - {x: -1.01, y: -3.5994785}
+--- !u!114 &1753496108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460193132104443980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530f2577838a5374d8a709f3d9f70a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

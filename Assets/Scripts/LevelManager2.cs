@@ -17,7 +17,7 @@ public class LevelManager2 : LevelManager
     {
         base.Start();
         LevelManager.leftLevelBoundary = -4.83f;
-        LevelManager.rightLevelBoundary = 203.13f;
+        LevelManager.rightLevelBoundary = 400f;
         LevelManager.CurrCheckPoint = intialCheckPoint;
         StartCoroutine(SummonLightning());
     }

@@ -33,7 +33,7 @@ public class Player : MonoBehaviour {
 
     private PlayerStats playerStats;
 
-    public bool isWallCollision;
+    private bool isWallCollision;
     public bool IsWallCollision { get => isWallCollision; set => isWallCollision = value; }
 
 
@@ -47,13 +47,13 @@ public class Player : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         playerStats.BasicFireBallTimer = 0f;
-        playerStats.isbasicFireBallOnCooldown = false;
+        playerStats.IsbasicFireBallOnCooldown = false;
 
         playerStats.SuperFireBallTimer = 0f;
-        playerStats.isSuperFireBallOnCooldown = false;
+        playerStats.IsSuperFireBallOnCooldown = false;
 
         playerStats.DashTimer = 0f;
-        playerStats.isDashOnCooldown = false;
+        playerStats.IsDashOnCooldown = false;
 
         IsWallCollision = false;
 
@@ -76,63 +76,63 @@ public class Player : MonoBehaviour {
     public void shootBasicFireBall()
     {
         Instantiate(basicFireball, shootingPoint.position, shootingPoint.rotation);
-        playerStats.isbasicFireBallOnCooldown = true;
+        playerStats.IsbasicFireBallOnCooldown = true;
     }
 
     public void shootSuperFireball()
     {
         Instantiate(superFireball, shootingPoint.position, shootingPoint.rotation);
-        playerStats.isSuperFireBallOnCooldown = true;
+        playerStats.IsSuperFireBallOnCooldown = true;
     }
     // Update is called once per frame
     void Update () {
 
 
         //shooting basic fireball
-        if (Input.GetKeyDown(basicFireballKey) && !playerStats.isbasicFireBallOnCooldown)
+        if (Input.GetKeyDown(basicFireballKey) && !playerStats.IsbasicFireBallOnCooldown)
         {
             shootBasicFireBall();
         }     
         //start cooldown timer for basic fireball
-        if (playerStats.isbasicFireBallOnCooldown)
+        if (playerStats.IsbasicFireBallOnCooldown)
         {
             playerStats.BasicFireBallTimer += Time.deltaTime;
             if(playerStats.BasicFireBallTimer >= playerStats.basicFireBallCooldown)
             {
-                playerStats.isbasicFireBallOnCooldown = false;
+                playerStats.IsbasicFireBallOnCooldown = false;
                 playerStats.BasicFireBallTimer = 0;
             }
         }
 
         //shooting super fireball
-        if (Input.GetKeyDown(superFireballKey) && !playerStats.isSuperFireBallOnCooldown)
+        if (Input.GetKeyDown(superFireballKey) && !playerStats.IsSuperFireBallOnCooldown)
         {
             shootSuperFireball();
         }
-        if (playerStats.isSuperFireBallOnCooldown)
+        if (playerStats.IsSuperFireBallOnCooldown)
         {
             playerStats.SuperFireBallTimer += Time.deltaTime;
             if (playerStats.SuperFireBallTimer >= playerStats.superFireBallCooldown)
             {
-                playerStats.isSuperFireBallOnCooldown = false;
+                playerStats.IsSuperFireBallOnCooldown = false;
                 playerStats.SuperFireBallTimer = 0;
             }
         }
 
         if (Input.GetKey(Teleport) && !isTeleporting)
         {
-            if (!playerStats.isDashOnCooldown)
+            if (!playerStats.IsDashOnCooldown)
             {
                 isTeleporting = true;
-                playerStats.isDashOnCooldown = true;
+                playerStats.IsDashOnCooldown = true;
             }
         }
-        if (playerStats.isDashOnCooldown)
+        if (playerStats.IsDashOnCooldown)
         {
             playerStats.DashTimer += Time.deltaTime;
             if (playerStats.DashTimer >= playerStats.dashCooldown)
             {
-                playerStats.isDashOnCooldown = false;
+                playerStats.IsDashOnCooldown = false;
                 playerStats.DashTimer = 0f;
             }
         }

@@ -35,7 +35,6 @@ public class Wraith : Minion
             FacePlayer();
             if (!(isAttackOnCooldown))
             {
-                Debug.Log("Line of Sight is: " + lineOfSight + " Is player within line of sight? " + isPlayerWithinLineOfSight());
                 StartCoroutine(shootDarkMagicalball());
                 isAttackOnCooldown = true; 
             }

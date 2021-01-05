@@ -8,21 +8,33 @@ public class PlayerStats : MonoBehaviour
     private float health;
 
     //Cooldown related
-    public bool isbasicFireBallOnCooldown;
+    private bool isbasicFireBallOnCooldown;
     public float basicFireBallCooldown;
     private float basicFireBallTimer;
 
-    public bool isSuperFireBallOnCooldown;
+    private bool isSuperFireBallOnCooldown;
     public float superFireBallCooldown;
     private float superFireBallTimer;
 
     public float dashCooldown;
     private float dashTimer;
-    public bool isDashOnCooldown;
+    private bool isDashOnCooldown;
 
     public float BasicFireBallTimer { get => basicFireBallTimer; set => basicFireBallTimer = value; }
     public float SuperFireBallTimer { get => superFireBallTimer; set => superFireBallTimer = value; }
     public float DashTimer { get => dashTimer; set => dashTimer = value; }
+    public float Health { get => health;  }
+    public bool IsSuperFireBallOnCooldown { get => isSuperFireBallOnCooldown; set => isSuperFireBallOnCooldown = value; }
+    public bool IsDashOnCooldown { get => isDashOnCooldown; set => isDashOnCooldown = value; }
+    public bool IsbasicFireBallOnCooldown { get => isbasicFireBallOnCooldown; set => isbasicFireBallOnCooldown = value; }
+
+    private void Start()
+    {
+        health = maxHealth;
+        IsbasicFireBallOnCooldown = false;
+        IsSuperFireBallOnCooldown = false;
+        IsDashOnCooldown = false;
+    }
 
     public virtual void TakeDamage(float dmg)
     {
