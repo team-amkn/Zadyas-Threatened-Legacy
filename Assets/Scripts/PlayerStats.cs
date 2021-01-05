@@ -20,6 +20,8 @@ public class PlayerStats : MonoBehaviour
     private float dashTimer;
     private bool isDashOnCooldown;
 
+    private Player player;
+
     public float BasicFireBallTimer { get => basicFireBallTimer; set => basicFireBallTimer = value; }
     public float SuperFireBallTimer { get => superFireBallTimer; set => superFireBallTimer = value; }
     public float DashTimer { get => dashTimer; set => dashTimer = value; }
@@ -28,18 +30,31 @@ public class PlayerStats : MonoBehaviour
     public bool IsDashOnCooldown { get => isDashOnCooldown; set => isDashOnCooldown = value; }
     public bool IsbasicFireBallOnCooldown { get => isbasicFireBallOnCooldown; set => isbasicFireBallOnCooldown = value; }
 
+    void Awake()
+    {
+        DontDestroyOnLoad(transform.gameObject);
+    }
     private void Start()
     {
         health = maxHealth;
         IsbasicFireBallOnCooldown = false;
         IsSuperFireBallOnCooldown = false;
         IsDashOnCooldown = false;
+
+        player = GetComponent<Player>();
     }
 
     public virtual void TakeDamage(float dmg)
     {
 
+        for (float i = Health; i > Health - dmg; i -= 0.5f)
+        {
+            if (i < 0) break;
+            player.HeartsSprites[(int)(i * 2)-1].enabled = false;
+        }
+
         health = Mathf.Clamp(health - dmg, 0, maxHealth);
+
 
         if (health == 0) {
             //Shoof hata3mel eh lamma ymoot
@@ -55,7 +70,14 @@ public class PlayerStats : MonoBehaviour
 
     public virtual void AddHealth(float inc)
     {
-        health = Mathf.Clamp(health + inc, 0, maxHealth);
+        float new_health = Mathf.Clamp(health + inc, 0, maxHealth);
+
+        for (float i = Health; i < new_health; i += 0.5f)
+        {
+            player.HeartsSprites[(int)(i * 2) - 1].enabled = true;
+        }
+
+        health = new_health;
     }
 
     public void ReduceCooldowns(float percentage)

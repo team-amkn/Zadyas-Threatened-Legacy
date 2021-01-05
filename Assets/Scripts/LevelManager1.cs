@@ -12,9 +12,4 @@ public class LevelManager1 : LevelManager
         LevelManager.rightLevelBoundary = 82.68f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

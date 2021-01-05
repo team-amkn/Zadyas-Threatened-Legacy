@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3902035824657700256}
   - component: {fileID: 3902035824657700287}
   - component: {fileID: 3902035824657700286}
+  - component: {fileID: 5083753335232071418}
   m_Layer: 0
-  m_Name: _ortal
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,5 +136,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45155539aa1b51542b9a0b0975f59183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5083753335232071418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3902035824657700285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac449e73e57fdd4d95d86dfb2d9c815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

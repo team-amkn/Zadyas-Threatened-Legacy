@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
     public float moveSpeed;
@@ -34,8 +36,13 @@ public class Player : MonoBehaviour {
     private PlayerStats playerStats;
 
     private bool isWallCollision;
+    private GameObject dashCooldownGUI, superFireballCooldownGUI;
+    private TextMeshProUGUI dashCooldownText, superFireballCooldownText;
     public bool IsWallCollision { get => isWallCollision; set => isWallCollision = value; }
 
+    private GameObject[] heartsGUI;
+    private SpriteRenderer[] heartsSprites;
+    public SpriteRenderer[] HeartsSprites { get => heartsSprites; set => heartsSprites = value; }
 
     // Use this for initialization
     void Start ()
@@ -46,16 +53,31 @@ public class Player : MonoBehaviour {
         isFacingRight = true;
         anim = GetComponent<Animator>();
 
-        playerStats.BasicFireBallTimer = 0f;
+        playerStats.BasicFireBallTimer = playerStats.basicFireBallCooldown;
         playerStats.IsbasicFireBallOnCooldown = false;
 
-        playerStats.SuperFireBallTimer = 0f;
+        playerStats.SuperFireBallTimer = playerStats.superFireBallCooldown;
         playerStats.IsSuperFireBallOnCooldown = false;
 
-        playerStats.DashTimer = 0f;
+        playerStats.DashTimer = playerStats.dashCooldown;
         playerStats.IsDashOnCooldown = false;
 
         IsWallCollision = false;
+
+        dashCooldownGUI = GameObject.FindGameObjectWithTag("DashCoolDownGUI");
+        superFireballCooldownGUI = GameObject.FindGameObjectWithTag("SuperFireBallCoolDownGUI");
+
+        dashCooldownText = dashCooldownGUI.GetComponent<TextMeshProUGUI>();
+        superFireballCooldownText = superFireballCooldownGUI.GetComponent<TextMeshProUGUI>();
+
+        heartsGUI = GameObject.FindGameObjectsWithTag("Heart");
+
+        heartsSprites = new SpriteRenderer[heartsGUI.Length];
+
+        for (int i = 0; i < 10; i++)
+        {
+            heartsSprites[i] = heartsGUI[i].GetComponent<SpriteRenderer>();
+        }
 
     }
 
@@ -96,11 +118,11 @@ public class Player : MonoBehaviour {
         //start cooldown timer for basic fireball
         if (playerStats.IsbasicFireBallOnCooldown)
         {
-            playerStats.BasicFireBallTimer += Time.deltaTime;
-            if(playerStats.BasicFireBallTimer >= playerStats.basicFireBallCooldown)
+            playerStats.BasicFireBallTimer -= Time.deltaTime;
+            if(playerStats.BasicFireBallTimer <= 0)
             {
                 playerStats.IsbasicFireBallOnCooldown = false;
-                playerStats.BasicFireBallTimer = 0;
+                playerStats.BasicFireBallTimer = playerStats.basicFireBallCooldown;
             }
         }
 
@@ -111,11 +133,14 @@ public class Player : MonoBehaviour {
         }
         if (playerStats.IsSuperFireBallOnCooldown)
         {
-            playerStats.SuperFireBallTimer += Time.deltaTime;
-            if (playerStats.SuperFireBallTimer >= playerStats.superFireBallCooldown)
+            playerStats.SuperFireBallTimer -= Time.deltaTime;
+            superFireballCooldownText.text = System.String.Format("{0:0.0}", playerStats.SuperFireBallTimer);
+
+            if (playerStats.SuperFireBallTimer <= 0)
             {
                 playerStats.IsSuperFireBallOnCooldown = false;
-                playerStats.SuperFireBallTimer = 0;
+                superFireballCooldownText.text = "Ready";
+                playerStats.SuperFireBallTimer = playerStats.superFireBallCooldown;
             }
         }
 
@@ -129,11 +154,13 @@ public class Player : MonoBehaviour {
         }
         if (playerStats.IsDashOnCooldown)
         {
-            playerStats.DashTimer += Time.deltaTime;
-            if (playerStats.DashTimer >= playerStats.dashCooldown)
+            playerStats.DashTimer -= Time.deltaTime;
+            dashCooldownText.text = System.String.Format("{0:0.0}", playerStats.DashTimer);
+            if (playerStats.DashTimer <= 0)
             {
                 playerStats.IsDashOnCooldown = false;
-                playerStats.DashTimer = 0f;
+                dashCooldownText.text = "Ready";
+                playerStats.DashTimer = playerStats.dashCooldown;
             }
         }
         //start cooldown timer for super fireball
