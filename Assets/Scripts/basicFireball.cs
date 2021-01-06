@@ -40,7 +40,7 @@ public class basicFireball : AxelFireball
             Destroy(this.gameObject);
             this.hasCollided = true;
         }
-        else if (other.tag == "Wall")
+        else if (other.tag == "Wall" || other.tag == "Platform" || other.tag == "AravosPlatform")
         {
             Destroy(this.gameObject);
             this.hasCollided = true;

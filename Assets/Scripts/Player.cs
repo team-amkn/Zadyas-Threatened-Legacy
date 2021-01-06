@@ -71,6 +71,7 @@ public class Player : MonoBehaviour {
         superFireballCooldownText = superFireballCooldownGUI.GetComponent<TextMeshProUGUI>();
 
         heartsGUI = GameObject.FindGameObjectsWithTag("Heart");
+        System.Array.Sort(heartsGUI, (x, y) => System.String.Compare(x.gameObject.name, y.gameObject.name));
 
         heartsSprites = new SpriteRenderer[heartsGUI.Length];
 

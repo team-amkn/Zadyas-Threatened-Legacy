@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5090413586700919230}
   m_Layer: 8
   m_Name: CaveGround
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5090413586700919219}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 128c861c9c18f5e4f9d9fde539bf8df3, type: 2}
   m_IsTrigger: 0

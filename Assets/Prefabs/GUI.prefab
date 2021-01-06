@@ -23,7 +23,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4923875436695193030}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 5294228657720273048}
   - component: {fileID: 5294228657720273051}
   m_Layer: 0
-  m_Name: RightHalf (3)
+  m_Name: HeartGUI7
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 5294228657783873576}
   - component: {fileID: 5294228657783873579}
   m_Layer: 0
-  m_Name: LeftHeart (2)
+  m_Name: HeartGUI4
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 5294228657822106494}
   - component: {fileID: 5294228657822106489}
   m_Layer: 0
-  m_Name: LeftHeart (1)
+  m_Name: HeartGUI2
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 5294228658343361617}
   - component: {fileID: 5294228658343361616}
   m_Layer: 0
-  m_Name: LeftHeart (3)
+  m_Name: HeartGUI6
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 5294228658577731036}
   - component: {fileID: 5294228658577731039}
   m_Layer: 0
-  m_Name: RightHalf (4)
+  m_Name: HeartGUI9
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 5294228658919925329}
   - component: {fileID: 5294228658919925328}
   m_Layer: 0
-  m_Name: RightHalf (2)
+  m_Name: HeartGUI5
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 5294228659167702539}
   - component: {fileID: 5294228659167702538}
   m_Layer: 0
-  m_Name: RightHalf
+  m_Name: HeartGUI1
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 5294228659264775534}
   - component: {fileID: 5294228659264775529}
   m_Layer: 0
-  m_Name: LeftHeart (4)
+  m_Name: HeartGUI8
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 5294228659390996071}
   - component: {fileID: 5294228659390996070}
   m_Layer: 0
-  m_Name: RightHalf (1)
+  m_Name: HeartGUI3
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1361,7 +1361,7 @@ GameObject:
   - component: {fileID: 5294228659639184457}
   - component: {fileID: 5294228659639184456}
   m_Layer: 0
-  m_Name: LeftHeart
+  m_Name: HeartGUI0
   m_TagString: Heart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

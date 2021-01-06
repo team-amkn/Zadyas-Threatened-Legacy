@@ -30,7 +30,7 @@ public class DarkMagicalProjectile : Projectile
             FindObjectOfType<PlayerStats>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
-        if(other.tag == "wall")
+        if(other.tag == "Wall" || other.tag == "Platform")
         {
             Destroy(this.gameObject);
         }
