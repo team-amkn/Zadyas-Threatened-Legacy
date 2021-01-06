@@ -62,7 +62,7 @@ public class Aravos : Enemy
                 Instantiate(wraith, new Vector3(this.transform.position.x + 1.8f, this.transform.position.y + 1f, this.transform.position.z), Quaternion.identity);
                 levelManager.currWraithCount += 2;
             };
-
+            anim.Play("Summon");
             yield return new WaitForSeconds(minionSummonCooldown);
         }
 
@@ -72,6 +72,7 @@ public class Aravos : Enemy
     {
         while (true)
         {
+            anim.Play("Shooting");
             GameObject obj = Instantiate(cursedFireBall, cursedBallPoint.position, cursedBallPoint.rotation);
             obj.GetComponent<DarkMagicalProjectile>().SourceGameObject = this.transform;
             obj.GetComponent<DarkMagicalProjectile>().SourcePosition = this.transform.position;
@@ -83,6 +84,7 @@ public class Aravos : Enemy
     {
         while (true)
         {
+            anim.Play("Summon");
             Instantiate(lightning, lightningTransform1);
             Instantiate(lightning, lightningTransform2);
             Instantiate(lightning, lightningTransform3);
@@ -97,8 +99,8 @@ public class Aravos : Enemy
 
         if (HP <= 0)
         {
-            //Play Death Animation
-            Destroy(this.gameObject);
+            anim.Play("Death");
+            Destroy(this.gameObject, 0.5f);
             //Shoof hata3mel eh tany lamma ymoot
         }
     }

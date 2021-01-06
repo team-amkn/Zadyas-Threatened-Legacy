@@ -11,11 +11,13 @@ public class Enemy : MonoBehaviour
     protected bool scalePositiveWhenFacingRight = true;
     public float attackCooldown;
     protected bool isAttackOnCooldown = false;
+    public Animator anim;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         playerStats = FindObjectOfType<PlayerStats>();
+        this.anim = this.gameObject.GetComponent<Animator>();
     }
 
     protected virtual void FacePlayer()

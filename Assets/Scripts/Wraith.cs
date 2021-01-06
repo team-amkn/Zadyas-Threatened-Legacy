@@ -7,23 +7,17 @@ public class Wraith : Minion
     public Transform darkMagicalBallPoint;
     public GameObject projectile;
 
-    IEnumerator shootDarkMagicalball()
-    {
-      while (true)
-        {
-            GameObject obj = Instantiate(projectile, darkMagicalBallPoint.position, darkMagicalBallPoint.rotation);
-            obj.GetComponent<DarkMagicalProjectile>().SourceGameObject = this.transform;
-            obj.GetComponent<DarkMagicalProjectile>().SourcePosition = this.transform.position;
-            yield return new WaitForSeconds(attackCooldown);
-        }
-        
-    }
+
+    private float attackCooldownTimer;
+
+
+
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         this.enemy = this.GetComponent<Transform>();
-
         isAttackOnCooldown = false;
     }
 
@@ -33,14 +27,24 @@ public class Wraith : Minion
         if (isPlayerWithinLineOfSight())
         {
             FacePlayer();
-            if (!(isAttackOnCooldown))
+            if (!isAttackOnCooldown)
             {
-                StartCoroutine(shootDarkMagicalball());
-                isAttackOnCooldown = true; 
+                anim.Play("Attack");
+                GameObject obj = Instantiate(projectile, darkMagicalBallPoint.position, darkMagicalBallPoint.rotation);
+                obj.GetComponent<DarkMagicalProjectile>().SourceGameObject = this.transform;
+                obj.GetComponent<DarkMagicalProjectile>().SourcePosition = this.transform.position;
+                isAttackOnCooldown = true;
             }
-            
+            if (isAttackOnCooldown)
+            {
+                attackCooldownTimer += Time.deltaTime;
+                if (attackCooldownTimer >= attackCooldown)
+                {
+                    isAttackOnCooldown = false;
+                    attackCooldownTimer = 0f;
+                }
+            }
         }
-        
     }
 
 

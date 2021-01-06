@@ -33,8 +33,15 @@ public class Golem : Minion
             {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerStats.transform.position.x + 0.4f, transform.position.y, transform.position.z), speed * Time.deltaTime);
             }
-            else {
+            else if (this.transform.position.x < playerStats.transform.position.x)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(playerStats.transform.position.x - 0.4f, transform.position.y, transform.position.z), speed * Time.deltaTime);
+            }
+            if (Mathf.Abs(this.transform.position.x - playerStats.transform.position.x) <= 1f) {
+                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack")) {
+                    anim.Play("idle");
+                    Debug.Log("Should be idle");
+                }
             }
             wasChasingPlayer = true;
         }
@@ -51,6 +58,7 @@ public class Golem : Minion
             yield return new WaitForSeconds(attackCooldown);
             isAttackOnCooldown = false; //To stop couroutine
             GetComponent<BoxCollider2D>().enabled = true;
+
         }
 
     }
@@ -93,7 +101,7 @@ public class Golem : Minion
         {
             if (!isAttackOnCooldown)
             {
-                //Play attack animation
+                anim.Play("Attack");
                 isAttackOnCooldown = true;
                 GetComponent<BoxCollider2D>().enabled = false;
                 StartCoroutine(AttackTimer());
