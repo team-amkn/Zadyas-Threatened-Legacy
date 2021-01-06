@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
     void Start ()
     {
         playerStats = this.GetComponent<PlayerStats>();
-
+        playerStats.Player = this;
 
         isFacingRight = true;
         anim = GetComponent<Animator>();

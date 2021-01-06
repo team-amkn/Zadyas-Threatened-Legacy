@@ -9,6 +9,7 @@ public class LevelManager3 : LevelManager
     // Start is called before the first frame update
     protected override void Start()
     {
+        base.Start();
         currGolemCount = 0;
         currWraithCount = 0;
         LevelManager.CurrCheckPoint = intialCheckPoint;
@@ -16,9 +17,5 @@ public class LevelManager3 : LevelManager
         LevelManager.rightLevelBoundary = 5.83f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

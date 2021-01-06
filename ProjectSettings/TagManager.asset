@@ -18,6 +18,10 @@ TagManager:
   - Heart
   - DashCoolDownGUI
   - SuperFireBallCoolDownGUI
+  - gameOverCanvas
+  - BigMonster
+  - RespawnButton
+  - RestartLevelButton
   layers:
   - Default
   - TransparentFX

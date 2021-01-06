@@ -22,11 +22,6 @@ public class LevelManager2 : LevelManager
         StartCoroutine(SummonLightning());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     IEnumerator SummonLightning()
     {
@@ -39,6 +34,15 @@ public class LevelManager2 : LevelManager
             Vector3 spawnPosition = new Vector3(XSpawnPosition, 0.1f, 0f);
             Instantiate(lightning, spawnPosition, Quaternion.identity);
             i = ++i % lightningTiming.Length;
+        }
+    }
+
+    public override void Respawn()
+    {
+        {
+            GameObject bigMonster = GameObject.FindGameObjectWithTag("BigMonster");
+            bigMonster.transform.position = new Vector3(LevelManager.CurrCheckPoint.transform.position.x - 12f, -1.55f); ;
+            base.Respawn();
         }
     }
 

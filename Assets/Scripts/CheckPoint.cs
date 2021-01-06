@@ -27,7 +27,6 @@ public class CheckPoint : MonoBehaviour
             {
                 LevelManager.CurrCheckPoint.GetComponent<BoxCollider2D>().enabled = false;
                 LevelManager.CurrCheckPoint = gameObject;
-                Debug.Log(LevelManager.CurrCheckPoint.name);
             }
 
         }

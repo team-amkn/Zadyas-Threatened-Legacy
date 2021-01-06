@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -29,43 +30,52 @@ public class PlayerStats : MonoBehaviour
     public bool IsSuperFireBallOnCooldown { get => isSuperFireBallOnCooldown; set => isSuperFireBallOnCooldown = value; }
     public bool IsDashOnCooldown { get => isDashOnCooldown; set => isDashOnCooldown = value; }
     public bool IsbasicFireBallOnCooldown { get => isbasicFireBallOnCooldown; set => isbasicFireBallOnCooldown = value; }
+    public Player Player { get => player; set => player = value; }
 
+    
+    /*
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
     }
+    */
+
+
     private void Start()
     {
         health = maxHealth;
         IsbasicFireBallOnCooldown = false;
         IsSuperFireBallOnCooldown = false;
         IsDashOnCooldown = false;
-
-        player = GetComponent<Player>();
+        if (LevelManager.arePlayerStatsSaved) LevelManager.LoadPlayerStats(this);
     }
+
 
     public virtual void TakeDamage(float dmg)
     {
+        float new_health = Mathf.Clamp(health - dmg, 0, maxHealth);
 
-        for (float i = Health; i > Health - dmg; i -= 0.5f)
+        for (float i = Health; i > new_health ; i -= 0.5f)
         {
-            if (i < 0) break;
             player.HeartsSprites[(int)(i * 2)-1].enabled = false;
         }
 
-        health = Mathf.Clamp(health - dmg, 0, maxHealth);
+        health = new_health;
 
 
         if (health == 0) {
-            //Shoof hata3mel eh lamma ymoot
-            Debug.Log("Axel mat he5ohe5o");
+            GetComponent<SpriteRenderer>().enabled = false;
+            GameObject.FindGameObjectWithTag("gameOverCanvas").GetComponent<Canvas>().enabled = true;
+            GameObject.FindGameObjectWithTag("RespawnButton").GetComponent<Button>().enabled = true;
+            GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>().enabled = true;
+            player.enabled = false;
         };
 
     }
 
     public virtual void InstantDeath()
     {
-        TakeDamage(maxHealth);
+        TakeDamage(Health);
     }
 
     public virtual void AddHealth(float inc)
@@ -74,7 +84,7 @@ public class PlayerStats : MonoBehaviour
 
         for (float i = Health; i < new_health; i += 0.5f)
         {
-            player.HeartsSprites[(int)(i * 2) - 1].enabled = true;
+            player.HeartsSprites[(int)(i * 2)].enabled = true;
         }
 
         health = new_health;
@@ -84,5 +94,6 @@ public class PlayerStats : MonoBehaviour
     {
         dashCooldown = dashCooldown - ( dashCooldown * percentage );
         superFireBallCooldown = superFireBallCooldown - (superFireBallCooldown * percentage);
+        LevelManager.SavePlayerStats(this);
     }
 }
