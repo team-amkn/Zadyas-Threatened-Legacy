@@ -132,6 +132,7 @@ MonoBehaviour:
   L: 97
   R: 100
   Teleport: 304
+  escape: 27
   groundCheck: {fileID: 1048982895617258313}
   groundCheckRadius: 0.65
   whatIsGround:
@@ -142,7 +143,6 @@ MonoBehaviour:
   basicFireballKey: 323
   superFireball: {fileID: 3757864417241564997, guid: 26272ec43bf066d458d1b3415c768003, type: 3}
   superFireballKey: 324
-  isWallCollision: 0
 --- !u!95 &1688135306145678467
 Animator:
   serializedVersion: 3
@@ -201,12 +201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  isbasicFireBallOnCooldown: 0
   basicFireBallCooldown: 0.2
-  isSuperFireBallOnCooldown: 0
   superFireBallCooldown: 5
   dashCooldown: 4
-  isDashOnCooldown: 0
 --- !u!1 &7447652470301200322
 GameObject:
   m_ObjectHideFlags: 0

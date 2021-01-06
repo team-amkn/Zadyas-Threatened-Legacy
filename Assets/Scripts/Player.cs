@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     public KeyCode L;
     public KeyCode R;
     public KeyCode Teleport;
+    public KeyCode escape;
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;

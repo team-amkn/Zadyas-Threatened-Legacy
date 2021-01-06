@@ -64,11 +64,12 @@ public class PlayerStats : MonoBehaviour
 
 
         if (health == 0) {
-            GetComponent<SpriteRenderer>().enabled = false;
-            GameObject.FindGameObjectWithTag("gameOverCanvas").GetComponent<Canvas>().enabled = true;
-            GameObject.FindGameObjectWithTag("RespawnButton").GetComponent<Button>().enabled = true;
-            GameObject.FindGameObjectWithTag("RestartLevelButton").GetComponent<Button>().enabled = true;
-            player.enabled = false;
+            if (!LevelManager.IsPlayerDead)
+            {
+                LevelManager.IsPlayerDead = true;
+                LevelManager.PlayerDead();
+            }
+
         };
 
     }

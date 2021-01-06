@@ -23,6 +23,9 @@ TagManager:
   - RespawnButton
   - RestartLevelButton
   - AravosPlatform
+  - pauseMenu
+  - ResumeButton
+  - QuitButton
   layers:
   - Default
   - TransparentFX

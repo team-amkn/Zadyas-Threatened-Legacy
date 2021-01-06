@@ -10,6 +10,7 @@ public class LevelManager3 : LevelManager
     protected override void Start()
     {
         base.Start();
+        currLevelManger = this;
         currGolemCount = 0;
         currWraithCount = 0;
         LevelManager.CurrCheckPoint = intialCheckPoint;

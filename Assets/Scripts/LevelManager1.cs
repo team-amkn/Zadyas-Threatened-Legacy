@@ -8,6 +8,7 @@ public class LevelManager1 : LevelManager
     protected override void Start()
     {
         base.Start();
+        currLevelManger = this;
         LevelManager.CurrCheckPoint = intialCheckPoint;
         LevelManager.leftLevelBoundary = -7.74f;
         LevelManager.rightLevelBoundary = 82.68f;
