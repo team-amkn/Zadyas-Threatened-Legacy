@@ -123,8 +123,8 @@ public class LevelManager : MonoBehaviour
         isPlayerDead = false;
         Destroy(GameObject.FindGameObjectWithTag("gameOverCanvas"));
         UnFreezeScene();
+        AudioManager.instance.BGMusicSrc.Play(); //To replay level music
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
     }
 
     protected void Update()

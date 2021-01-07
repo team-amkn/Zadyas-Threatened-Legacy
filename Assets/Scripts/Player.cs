@@ -45,6 +45,10 @@ public class Player : MonoBehaviour {
     private SpriteRenderer[] heartsSprites;
     public SpriteRenderer[] HeartsSprites { get => heartsSprites; set => heartsSprites = value; }
 
+    public AudioClip basicFireballAudio;
+    public AudioClip superFireballAudio;
+    public AudioClip teleportAudio;
+
     // Use this for initialization
     void Start ()
     {
@@ -100,12 +104,14 @@ public class Player : MonoBehaviour {
     public void shootBasicFireBall()
     {
         Instantiate(basicFireball, shootingPoint.position, shootingPoint.rotation);
+        AudioManager.instance.PlaySingle(basicFireballAudio, 0.3f, 0.5f, 1f);
         playerStats.IsbasicFireBallOnCooldown = true;
     }
 
     public void shootSuperFireball()
     {
         Instantiate(superFireball, shootingPoint.position, shootingPoint.rotation);
+        AudioManager.instance.PlaySingle(superFireballAudio, 0.3f, 0.5f, 1f);
         playerStats.IsSuperFireBallOnCooldown = true;
     }
     // Update is called once per frame
@@ -150,6 +156,7 @@ public class Player : MonoBehaviour {
         {
             if (!playerStats.IsDashOnCooldown)
             {
+                AudioManager.instance.PlaySingle(teleportAudio, 0.3f, 1f, 1f);
                 isTeleporting = true;
                 playerStats.IsDashOnCooldown = true;
             }
