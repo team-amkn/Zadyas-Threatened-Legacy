@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     public float moveSpeed;
     public float jumpMoveSpeed;
     private float speed;
@@ -19,11 +20,13 @@ public class Player : MonoBehaviour {
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
-    private bool grounded;
-    private Animator anim;
+    private bool grounded = true;
+    
+
+    public Animator anim;
 
     //Shooting basic fireball
-    public Transform  shootingPoint;
+    public Transform shootingPoint;
     public GameObject basicFireball;
     public KeyCode basicFireballKey;
 
@@ -35,10 +38,11 @@ public class Player : MonoBehaviour {
 
     private bool isWallCollision;
     public bool IsWallCollision { get => isWallCollision; set => isWallCollision = value; }
+    
 
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         playerStats = this.GetComponent<PlayerStats>();
 
@@ -85,123 +89,126 @@ public class Player : MonoBehaviour {
         playerStats.IsSuperFireBallOnCooldown = true;
     }
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
 
-
-        //shooting basic fireball
-        if (Input.GetKeyDown(basicFireballKey) && !playerStats.IsbasicFireBallOnCooldown)
-        {
-            shootBasicFireBall();
-        }     
-        //start cooldown timer for basic fireball
-        if (playerStats.IsbasicFireBallOnCooldown)
-        {
-            playerStats.BasicFireBallTimer += Time.deltaTime;
-            if(playerStats.BasicFireBallTimer >= playerStats.basicFireBallCooldown)
+            //shooting basic fireball
+            if (Input.GetKeyDown(basicFireballKey) && !playerStats.IsbasicFireBallOnCooldown)
             {
-                playerStats.IsbasicFireBallOnCooldown = false;
-                playerStats.BasicFireBallTimer = 0;
+                shootBasicFireBall();
             }
-        }
-
-        //shooting super fireball
-        if (Input.GetKeyDown(superFireballKey) && !playerStats.IsSuperFireBallOnCooldown)
-        {
-            shootSuperFireball();
-        }
-        if (playerStats.IsSuperFireBallOnCooldown)
-        {
-            playerStats.SuperFireBallTimer += Time.deltaTime;
-            if (playerStats.SuperFireBallTimer >= playerStats.superFireBallCooldown)
+            //start cooldown timer for basic fireball
+            if (playerStats.IsbasicFireBallOnCooldown)
             {
-                playerStats.IsSuperFireBallOnCooldown = false;
-                playerStats.SuperFireBallTimer = 0;
-            }
-        }
-
-        if (Input.GetKey(Teleport) && !isTeleporting)
-        {
-            if (!playerStats.IsDashOnCooldown)
-            {
-                isTeleporting = true;
-                playerStats.IsDashOnCooldown = true;
-            }
-        }
-        if (playerStats.IsDashOnCooldown)
-        {
-            playerStats.DashTimer += Time.deltaTime;
-            if (playerStats.DashTimer >= playerStats.dashCooldown)
-            {
-                playerStats.IsDashOnCooldown = false;
-                playerStats.DashTimer = 0f;
-            }
-        }
-        //start cooldown timer for super fireball
-
-        if (isTeleporting) {
-            teleportTime += Time.deltaTime;
-            if (teleportTime >= teleportDuration) {
-                float new_x;
-                isTeleporting = false;
-                if (isFacingRight) 
+                playerStats.BasicFireBallTimer += Time.deltaTime;
+                if (playerStats.BasicFireBallTimer >= playerStats.basicFireBallCooldown)
                 {
-                    new_x = this.transform.position.x + transportDistance;
+                    playerStats.IsbasicFireBallOnCooldown = false;
+                    playerStats.BasicFireBallTimer = 0;
                 }
-                else 
-                {
-                    new_x = this.transform.position.x - transportDistance;
-                }
-                if (new_x > LevelManager.rightLevelBoundary) new_x = LevelManager.rightLevelBoundary;
-                if (new_x < LevelManager.leftLevelBoundary) new_x = LevelManager.leftLevelBoundary;
-
-                this.transform.position = new Vector3(new_x, this.transform.position.y, this.transform.position.z);
-                teleportTime = 0;
-                }
-        }
-        anim.SetBool("isTeleporting", isTeleporting);
-
-
-		if(Input.GetKeyDown(Spacebar) && grounded)
-        {
-            Jump();
-        }
-
-        anim.SetBool("Grounded", grounded);
-
-        if (!grounded) {
-            speed = jumpMoveSpeed;
-        }
-        else {
-            speed = moveSpeed;
-        }
-
-        if (Input.GetKey(L) && !IsWallCollision)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
-            if (isFacingRight)
-            {
-                flip();
-                isFacingRight = false;
-            }   
-        }
-
-        if(Input.GetKey(R)&&!IsWallCollision)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
-
-            if (!isFacingRight)
-            {
-                flip();
-                isFacingRight = true;
             }
-        }
 
-        if (GetComponent<Rigidbody2D>().velocity.y == 0) isWallCollision = false;
+            //shooting super fireball
+            if (Input.GetKeyDown(superFireballKey) && !playerStats.IsSuperFireBallOnCooldown)
+            {
+                shootSuperFireball();
+            }
+            if (playerStats.IsSuperFireBallOnCooldown)
+            {
+                playerStats.SuperFireBallTimer += Time.deltaTime;
+                if (playerStats.SuperFireBallTimer >= playerStats.superFireBallCooldown)
+                {
+                    playerStats.IsSuperFireBallOnCooldown = false;
+                    playerStats.SuperFireBallTimer = 0;
+                }
+            }
 
-        anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+            if (Input.GetKey(Teleport) && !isTeleporting)
+            {
+                if (!playerStats.IsDashOnCooldown)
+                {
+                    isTeleporting = true;
+                    playerStats.IsDashOnCooldown = true;
+                }
+            }
+            if (playerStats.IsDashOnCooldown)
+            {
+                playerStats.DashTimer += Time.deltaTime;
+                if (playerStats.DashTimer >= playerStats.dashCooldown)
+                {
+                    playerStats.IsDashOnCooldown = false;
+                    playerStats.DashTimer = 0f;
+                }
+            }
+            //start cooldown timer for super fireball
 
-	}
+            if (isTeleporting)
+            {
+                teleportTime += Time.deltaTime;
+                if (teleportTime >= teleportDuration)
+                {
+                    float new_x;
+                    isTeleporting = false;
+                    if (isFacingRight)
+                    {
+                        new_x = this.transform.position.x + transportDistance;
+                    }
+                    else
+                    {
+                        new_x = this.transform.position.x - transportDistance;
+                    }
+                    if (new_x > LevelManager.rightLevelBoundary) new_x = LevelManager.rightLevelBoundary;
+                    if (new_x < LevelManager.leftLevelBoundary) new_x = LevelManager.leftLevelBoundary;
 
+                    this.transform.position = new Vector3(new_x, this.transform.position.y, this.transform.position.z);
+                    teleportTime = 0;
+                }
+            }
+            anim.SetBool("isTeleporting", isTeleporting);
+
+
+            if (Input.GetKeyDown(Spacebar) && grounded)
+            {
+                Jump();
+            }
+
+            anim.SetBool("Grounded", grounded);
+
+            if (!grounded)
+            {
+                speed = jumpMoveSpeed;
+            }
+            else
+            {
+                speed = moveSpeed;
+            }
+
+            if (Input.GetKey(L) && !IsWallCollision)
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(-speed, GetComponent<Rigidbody2D>().velocity.y);
+                if (isFacingRight)
+                {
+                    flip();
+                    isFacingRight = false;
+                }
+            }
+
+            if (Input.GetKey(R) && !IsWallCollision)
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
+
+                if (!isFacingRight)
+                {
+                    flip();
+                    isFacingRight = true;
+                }
+            }
+
+            if (GetComponent<Rigidbody2D>().velocity.y == 0) isWallCollision = false;
+
+            anim.SetFloat("Speed", Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x));
+
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -221,3 +228,4 @@ public class Player : MonoBehaviour {
     }
 
 }
+

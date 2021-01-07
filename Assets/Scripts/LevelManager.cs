@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     protected PlayerStats playerStats;
     private static GameObject currCheckPoint;
     public static float leftLevelBoundary, rightLevelBoundary;
+    
+  
 
     public static GameObject CurrCheckPoint { get => currCheckPoint; set => currCheckPoint = value; }
 
