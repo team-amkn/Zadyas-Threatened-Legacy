@@ -42,8 +42,8 @@ public class Player : MonoBehaviour {
     public bool IsWallCollision { get => isWallCollision; set => isWallCollision = value; }
 
     private GameObject[] heartsGUI;
-    private SpriteRenderer[] heartsSprites;
-    public SpriteRenderer[] HeartsSprites { get => heartsSprites; set => heartsSprites = value; }
+    private Image[] heartsSprites;
+    public Image[] HeartsSprites { get => heartsSprites; set => heartsSprites = value; }
 
     public AudioClip basicFireballAudio;
     public AudioClip superFireballAudio;
@@ -78,11 +78,11 @@ public class Player : MonoBehaviour {
         heartsGUI = GameObject.FindGameObjectsWithTag("Heart");
         System.Array.Sort(heartsGUI, (x, y) => System.String.Compare(x.gameObject.name, y.gameObject.name));
 
-        heartsSprites = new SpriteRenderer[heartsGUI.Length];
+        heartsSprites = new Image[heartsGUI.Length];
 
         for (int i = 0; i < 10; i++)
         {
-            heartsSprites[i] = heartsGUI[i].GetComponent<SpriteRenderer>();
+            heartsSprites[i] = heartsGUI[i].GetComponent<Image>();
         }
 
     }
@@ -104,14 +104,14 @@ public class Player : MonoBehaviour {
     public void shootBasicFireBall()
     {
         Instantiate(basicFireball, shootingPoint.position, shootingPoint.rotation);
-        AudioManager.instance.PlaySingle(basicFireballAudio, 0.3f, 0.5f, 1f);
+        AudioManager.instance.PlaySingle(basicFireballAudio, 0.05f, 0.5f, 1f);
         playerStats.IsbasicFireBallOnCooldown = true;
     }
 
     public void shootSuperFireball()
     {
         Instantiate(superFireball, shootingPoint.position, shootingPoint.rotation);
-        AudioManager.instance.PlaySingle(superFireballAudio, 0.3f, 0.5f, 1f);
+        AudioManager.instance.PlaySingle(superFireballAudio, 1f, 1f, 1f);
         playerStats.IsSuperFireBallOnCooldown = true;
     }
     // Update is called once per frame

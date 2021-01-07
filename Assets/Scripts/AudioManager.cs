@@ -17,8 +17,11 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }
         else {
-            Destroy(this.gameObject);
+            Destroy(instance.gameObject);
+            instance = this;
         }
+        
+        
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -26,9 +29,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySingle(AudioClip audio, float volume, float minPitch, float maxPitch) {
         FXSrc.clip = audio;
-        FXSrc.volume = Mathf.Clamp(volume, 0f, 1f); //So if the function is passed a value outside the range it gets handled here
-        float randomPitch = Random.Range(minPitch, maxPitch);
-        FXSrc.pitch = randomPitch;
+        FXSrc.volume = volume;
+        FXSrc.pitch = Random.Range(minPitch, maxPitch);
         FXSrc.Play();
     }
 

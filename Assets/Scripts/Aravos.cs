@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Aravos : Enemy
 {
+    public AravosHealthbar healthbar;
     public float HP;
 
     public float lightninigBoltsCooldown, minionSummonCooldown, cursedFireballCooldown;
     private LevelManager3 levelManager;
+
+
 
     private bool lightninigBoltsReady, minionSummonReady, cursedFireballReady;
     public GameObject wraith, golem, lightning, cursedFireBall;
@@ -21,6 +24,8 @@ public class Aravos : Enemy
 
         levelManager = FindObjectOfType<LevelManager3>();
         lightninigBoltsReady = minionSummonReady = cursedFireballReady = true;
+
+        healthbar.setMaxHealth(HP);
     }
 
     // Update is called once per frame
@@ -96,6 +101,7 @@ public class Aravos : Enemy
     public void TakeDamage(float damage)
     {
         HP -= damage;
+        healthbar.setHealth(HP);
 
         if (HP <= 0)
         {

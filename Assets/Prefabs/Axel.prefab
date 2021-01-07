@@ -144,7 +144,8 @@ MonoBehaviour:
   superFireball: {fileID: 3757864417241564997, guid: 26272ec43bf066d458d1b3415c768003, type: 3}
   superFireballKey: 324
   basicFireballAudio: {fileID: 8300000, guid: 916f47b21f8864b40a3c55f8abc3a593, type: 3}
-  superFireballAudio: {fileID: 8300000, guid: d9054b11a21c6544bbf619ac43bf2af3, type: 3}
+  superFireballAudio: {fileID: 8300000, guid: 83417cc30f2ad2e4c9e6be03532e1917, type: 3}
+  teleportAudio: {fileID: 8300000, guid: 283924220fea8574295e7d061e684b52, type: 3}
 --- !u!95 &1688135306145678467
 Animator:
   serializedVersion: 3

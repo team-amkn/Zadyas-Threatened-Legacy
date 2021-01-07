@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
 {
     public GameObject intialCheckPoint;
     protected PlayerStats playerStats;
+    public static Player player;
     private static GameObject currCheckPoint;
     private static float superFireBallCooldown, dashCooldown;
     public static float leftLevelBoundary, rightLevelBoundary;
@@ -37,20 +38,14 @@ public class LevelManager : MonoBehaviour
 
     public static void FreezeScene()
     {
+        player.enabled = false;
         Time.timeScale = 0;
     }
 
     public static void UnFreezeScene()
     {
+        player.enabled = true;
         Time.timeScale = 1;
-    }
-
-    // Start is called before the first frame update
-    protected virtual void Start()
-    {
-        playerStats = FindObjectOfType<PlayerStats>();
-        escape = FindObjectOfType<Player>().escape;
-
     }
 
 
@@ -64,6 +59,7 @@ public class LevelManager : MonoBehaviour
     {
         Destroy(GameObject.FindGameObjectWithTag("pauseMenu"));
         isGamePaused = false;
+        AudioManager.instance.BGMusicSrc.UnPause();
         LevelManager.UnFreezeScene();
     }
 
@@ -71,6 +67,7 @@ public class LevelManager : MonoBehaviour
     {
             isPlayerDead = false;
             Destroy(GameObject.FindGameObjectWithTag("gameOverCanvas"));
+            AudioManager.instance.BGMusicSrc.UnPause();
             UnFreezeScene();
             playerStats.GetComponent<SpriteRenderer>().enabled = true;
             playerStats.transform.position = currCheckPoint.transform.position;
@@ -98,18 +95,28 @@ public class LevelManager : MonoBehaviour
     {
         currLevelManger.playerStats.GetComponent<SpriteRenderer>().enabled = false;
         LevelManager.FreezeScene();
+        AudioManager.instance.BGMusicSrc.Pause();
         GameObject gameover = Instantiate(LevelManager.currLevelManger.gameOverMenu);
         GameObject restartButton = FindObjectWithTagInChildrenRecursive(gameover, "RestartLevelButton");
         GameObject respawnButton = FindObjectWithTagInChildrenRecursive(gameover, "RespawnButton");
-        restartButton.GetComponent<Button>().onClick.AddListener(currLevelManger.RestartLevel);
-        respawnButton.GetComponent<Button>().onClick.AddListener(currLevelManger.Respawn);
-
+        
+        //Remove level 3 option to respawn at checkpoint
+        if (LevelManager.currLevelManger.GetComponent<LevelManager3>())
+        {
+            respawnButton.SetActive(false);
+            restartButton.GetComponent<Button>().onClick.AddListener(currLevelManger.RestartLevel);
+        }
+        else {
+            restartButton.GetComponent<Button>().onClick.AddListener(currLevelManger.RestartLevel);
+            respawnButton.GetComponent<Button>().onClick.AddListener(currLevelManger.Respawn);
+        }
     }
 
 
     public void PauseGame()
     {
         LevelManager.FreezeScene();
+        AudioManager.instance.BGMusicSrc.Pause();
         isGamePaused = true;
         GameObject pausemenu = Instantiate(LevelManager.currLevelManger.pauseMenu);
         GameObject resumeButton = FindObjectWithTagInChildrenRecursive(pausemenu, "ResumeButton");
@@ -126,6 +133,15 @@ public class LevelManager : MonoBehaviour
         AudioManager.instance.BGMusicSrc.Play(); //To replay level music
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+
+    protected virtual void Start()
+    {
+        player = FindObjectOfType<Player>();
+        playerStats = FindObjectOfType<PlayerStats>();
+        escape = FindObjectOfType<Player>().escape;
+    }
+
 
     protected void Update()
     {
