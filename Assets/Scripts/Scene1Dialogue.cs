@@ -28,7 +28,7 @@ public class Scene1Dialogue : MonoBehaviour
             {
                 "Jareth: You and your brother have always had faint traces of the ancient's bloodline.\n I sensed that in both of you when I saw you and your mother that night in the forest.\n " +
                 "So, I decided to transfer my powers to you and your brother to save your lives " +
-                "\nand what's left of the Ancients' heritage",
+                "\nand what's left of the Ancients' heritage.",
                 "Axel: How!? It has been known that the Ancients are extinct!\n"+
                 "Jareth: Hahaha, that’s not true. I thought I was the one and only Ancient. But apparently,\n you guys are Ancients too. " +
                 "I have kept my real identity hidden all " +
@@ -39,9 +39,9 @@ public class Scene1Dialogue : MonoBehaviour
                 " other members of the elder council by exploiting the powers \nof the Ancients.\n" ,
                 " Jareth: As he knew that both of you are Ancients too, " +
                 "he thought what an easy prey \nto catch, hahaha",
-                "Axel: Hey, that’s not funny! I must save my brother and find a cure for my mother\n" +
+                "Axel: Hey, that’s not funny! I must save my brother and find a cure for my mother.\n" +
                 "Jareth: Here, take this. This grimoire will help you use your Ancient powers. Forgive me \nyoung fella, " +
-                "I have become too old to do anything to stop Aravos"
+                "I have become too old to do anything to stop Aravos."
             };
             dialogueManager.SetSentences(dialogue);
             dialogueManager.StartCoroutine(dialogueManager.TypeDialogue());
