@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     public static GameObject CurrCheckPoint { get => currCheckPoint; set => currCheckPoint = value; }
     public static bool IsPlayerDead { get => isPlayerDead; set => isPlayerDead = value; }
 
+
     public static void LoadPlayerStats(PlayerStats playerStats)
     {
         playerStats.superFireBallCooldown = superFireBallCooldown;
@@ -94,6 +95,7 @@ public class LevelManager : MonoBehaviour
     public static void PlayerDead()
     {
         currLevelManger.playerStats.GetComponent<SpriteRenderer>().enabled = false;
+        AudioManager.instance.PlaySingle(player.gameOverAudio, 0.2f, 1f, 1f);
         LevelManager.FreezeScene();
         AudioManager.instance.BGMusicSrc.Pause();
         GameObject gameover = Instantiate(LevelManager.currLevelManger.gameOverMenu);

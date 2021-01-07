@@ -152,11 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6914462442251560064, guid: afad46a5816ad954c83bdbf77639e488, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.649999
+      value: 8.313
       objectReference: {fileID: 0}
     - target: {fileID: 6914462442251560064, guid: afad46a5816ad954c83bdbf77639e488, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.29
+      value: -4.369
       objectReference: {fileID: 0}
     - target: {fileID: 6914462442251560064, guid: afad46a5816ad954c83bdbf77639e488, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1030,7 +1030,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.71
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1136,8 +1136,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913171789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.79, y: -0.35, z: 0}
-  m_LocalScale: {x: 0.36051267, y: 0.36051267, z: 0.36051267}
+  m_LocalPosition: {x: -1.79, y: 0.0703, z: 0}
+  m_LocalScale: {x: 0.36051267, y: 0.38835168, z: 0.36051267}
   m_Children:
   - {fileID: 301136182}
   m_Father: {fileID: 0}
@@ -2611,11 +2611,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970583045053372745, guid: 77843eb051f9f294bbcc8610522fe682, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.490001
+      value: -11.51
       objectReference: {fileID: 0}
     - target: {fileID: 4970583045053372745, guid: 77843eb051f9f294bbcc8610522fe682, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8899999
+      value: -3.43
       objectReference: {fileID: 0}
     - target: {fileID: 4970583045053372745, guid: 77843eb051f9f294bbcc8610522fe682, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2772,6 +2772,10 @@ MonoBehaviour:
   lightningTransform3: {fileID: 1877971848}
   lightningTransform4: {fileID: 452835346}
   cursedBallPoint: {fileID: 48237408}
+  evilLaugh1: {fileID: 8300000, guid: db345b9391e47994f85012cd3405c6ed, type: 3}
+  evilLaugh2: {fileID: 8300000, guid: 21c0a17b059523049a879d0e01f79a45, type: 3}
+  evilLaugh3: {fileID: 8300000, guid: 6b145504f377cbf45a065be6c62cd16d, type: 3}
+  aravosDeath: {fileID: 8300000, guid: 83252f082ad2dd845bdad1e10139fcc1, type: 3}
 --- !u!61 &1427440816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4020,8 +4024,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2139924712}
   - component: {fileID: 2139924711}
-  - component: {fileID: 2139924710}
   - component: {fileID: 2139924709}
+  - component: {fileID: 2139924713}
+  - component: {fileID: 2139924710}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -4125,20 +4130,102 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2139924710
-MonoBehaviour:
+--- !u!82 &2139924710
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139924708}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13d35da3cbd6374599a488ce4ca6f7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FXSrc: {fileID: 2139924709}
-  BGMusicSrc: {fileID: 2139924711}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!82 &2139924711
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4149,7 +4236,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d96709448f0e4f54fb3dcfc631547aaf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9db0f27fcbab09f4db9afad9e77d6e83, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.106
   m_Pitch: 1
@@ -4249,6 +4336,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2139924713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139924708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5bf13d910142b408a609ae1adbd7a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FXSrc: {fileID: 2139924709}
+  BGMusicSrc: {fileID: 2139924711}
+  AravosSFX: {fileID: 2139924710}
 --- !u!1001 &925161780596183696
 PrefabInstance:
   m_ObjectHideFlags: 0

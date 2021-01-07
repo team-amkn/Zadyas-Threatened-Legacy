@@ -47,7 +47,11 @@ public class Player : MonoBehaviour {
 
     public AudioClip basicFireballAudio;
     public AudioClip superFireballAudio;
-    public AudioClip teleportAudio;
+    public AudioClip teleportAudio1;
+    public AudioClip teleportAudio2;
+    public AudioClip teleportAudio3;
+    public AudioClip teleportAudio4;
+    public AudioClip gameOverAudio;
 
     // Use this for initialization
     void Start ()
@@ -111,7 +115,7 @@ public class Player : MonoBehaviour {
     public void shootSuperFireball()
     {
         Instantiate(superFireball, shootingPoint.position, shootingPoint.rotation);
-        AudioManager.instance.PlaySingle(superFireballAudio, 1f, 1f, 1f);
+        AudioManager.instance.PlaySingle(superFireballAudio, 0.05f, 1f, 1f);
         playerStats.IsSuperFireBallOnCooldown = true;
     }
     // Update is called once per frame
@@ -156,7 +160,7 @@ public class Player : MonoBehaviour {
         {
             if (!playerStats.IsDashOnCooldown)
             {
-                AudioManager.instance.PlaySingle(teleportAudio, 0.3f, 1f, 1f);
+                AudioManager.instance.RandomizeFX(teleportAudio1, teleportAudio2, teleportAudio3, teleportAudio4);
                 isTeleporting = true;
                 playerStats.IsDashOnCooldown = true;
             }

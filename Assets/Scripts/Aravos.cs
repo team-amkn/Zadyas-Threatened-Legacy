@@ -10,11 +10,19 @@ public class Aravos : Enemy
     public float lightninigBoltsCooldown, minionSummonCooldown, cursedFireballCooldown;
     private LevelManager3 levelManager;
 
+    private bool isDead = false;
 
 
     private bool lightninigBoltsReady, minionSummonReady, cursedFireballReady;
     public GameObject wraith, golem, lightning, cursedFireBall;
     public Transform lightningTransform1, lightningTransform2, lightningTransform3, lightningTransform4, cursedBallPoint;
+
+
+    public AudioClip evilLaugh1;
+    public AudioClip evilLaugh2;
+    public AudioClip evilLaugh3;
+    public AudioClip aravosDeath;
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -24,36 +32,39 @@ public class Aravos : Enemy
 
         levelManager = FindObjectOfType<LevelManager3>();
         lightninigBoltsReady = minionSummonReady = cursedFireballReady = true;
-
+        StartCoroutine(EvilLaugh());
         healthbar.setMaxHealth(HP);
     }
 
     // Update is called once per frame
     void Update()
     {
-        FacePlayer();
 
-        if (HP <= 100 && cursedFireballReady)
-        {
-            StartCoroutine(FireCursedFireball());
-            cursedFireballReady = false;
-        }
-        if (HP <= 75 && minionSummonReady)
-        {
-            StartCoroutine(SummonMinions());
-            minionSummonReady = false;
-        }
-        if (HP <= 25 && lightninigBoltsReady)
-        {
-            StartCoroutine(SummonLightningBolts());
-            lightninigBoltsReady = false;
+        if (!isDead) {
+            FacePlayer();
+
+            if (HP <= 100 && cursedFireballReady)
+            {
+                StartCoroutine(FireCursedFireball());
+                cursedFireballReady = false;
+            }
+            if (HP <= 75 && minionSummonReady)
+            {
+                StartCoroutine(SummonMinions());
+                minionSummonReady = false;
+            }
+            if (HP <= 25 && lightninigBoltsReady)
+            {
+                StartCoroutine(SummonLightningBolts());
+                lightninigBoltsReady = false;
+            }
         }
     }
 
 
     IEnumerator SummonMinions()
     {
-        while (true)
+        while (!isDead)
         {
             if (levelManager.currGolemCount < levelManager.maxGolemsCount)
             {
@@ -73,9 +84,22 @@ public class Aravos : Enemy
 
     }
 
+    IEnumerator EvilLaugh()
+    {
+        while (!isDead)
+        {
+            anim.Play("Rage");
+            AudioManagerLevel3 instance = (AudioManagerLevel3)(AudioManager.instance);
+            instance.RandomizeAravosFX(evilLaugh1, evilLaugh2, evilLaugh3);
+            yield return new WaitForSeconds(5);
+        }
+
+    }
+
+
     IEnumerator FireCursedFireball()
     {
-        while (true)
+        while (!isDead)
         {
             anim.Play("Shooting");
             GameObject obj = Instantiate(cursedFireBall, cursedBallPoint.position, cursedBallPoint.rotation);
@@ -87,7 +111,7 @@ public class Aravos : Enemy
 
     IEnumerator SummonLightningBolts()
     {
-        while (true)
+        while (!isDead)
         {
             anim.Play("Summon");
             Instantiate(lightning, lightningTransform1);
@@ -105,8 +129,10 @@ public class Aravos : Enemy
 
         if (HP <= 0)
         {
+            isDead = true;
+            AudioManager.instance.PlaySingle(aravosDeath, 0.2f, 1f, 1f);
             anim.Play("Death");
-            Destroy(this.gameObject, 0.5f);
+            Destroy(this.gameObject, 3f);
             //Shoof hata3mel eh tany lamma ymoot
         }
     }
