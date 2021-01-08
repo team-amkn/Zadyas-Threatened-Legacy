@@ -17,7 +17,6 @@ public class Wraith : Minion
     protected override void Start()
     {
         base.Start();
-        this.enemy = this.GetComponent<Transform>();
         isAttackOnCooldown = false;
     }
 

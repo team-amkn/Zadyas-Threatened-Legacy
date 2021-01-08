@@ -4312,7 +4312,6 @@ GameObject:
   - component: {fileID: 656471226}
   - component: {fileID: 656471225}
   - component: {fileID: 656471224}
-  - component: {fileID: 656471222}
   m_Layer: 0
   m_Name: Boundaries
   m_TagString: Untagged
@@ -4320,18 +4319,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &656471222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656471221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec813ec95d4f8424ab5e50952cda0591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &656471224
 BoxCollider2D:
   m_ObjectHideFlags: 0

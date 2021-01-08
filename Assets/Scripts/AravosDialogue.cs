@@ -35,7 +35,7 @@ public class AravosDialogue : MonoBehaviour
          
             dialogueManager.SetSentences(dialogue);
             dialogueManager.StartCoroutine(dialogueManager.TypeDialogue());
-            GetComponent<Collider2D>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
 
 
         }

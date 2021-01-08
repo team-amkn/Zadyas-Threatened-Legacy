@@ -2846,7 +2846,7 @@ MonoBehaviour:
   attackCooldown: 3
   anim: {fileID: 0}
   healthbar: {fileID: 1836841480}
-  HP: 10
+  HP: 100
   lightninigBoltsCooldown: 5
   minionSummonCooldown: 5
   cursedFireballCooldown: 3

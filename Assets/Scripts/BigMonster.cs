@@ -9,7 +9,6 @@ public class BigMonster : Enemy
     protected override void Start()
     {
         base.Start();
-        this.enemy = this.GetComponent<Transform>();
         scalePositiveWhenFacingRight = false;
     }
 

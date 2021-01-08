@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public float damage;
     public float speed;
-    private Transform sourceGameObject;
+    private Transform sourceGameObject; //The game object that shot the projectile so we can calculate the distance from it
     protected float distanceTravelled;
     public float maximumTravelledDistance;
     private Vector3 sourcePosition;

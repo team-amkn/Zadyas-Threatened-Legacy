@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource MenuSFX;
     public static AudioManager instance = null;
 
-    private static float originalBGMusicValue = 0.5f;
+    private static float originalBGMusicValue = 0.2f;
 
     public static void SetVolumeMultiplier(Slider slider)
     {

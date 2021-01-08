@@ -29,7 +29,6 @@ public class Aravos : Enemy
     protected override void Start()
     {
         base.Start();
-        this.enemy = this.GetComponent<Transform>();
 
         levelManager = FindObjectOfType<LevelManager3>();
         lightninigBoltsReady = minionSummonReady = cursedFireballReady = true;

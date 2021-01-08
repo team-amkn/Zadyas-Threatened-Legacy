@@ -22,7 +22,7 @@ public class Minion : Enemy
 
     public virtual void die()
     {
-        Destroy(enemy.gameObject);
+        Destroy(this.gameObject);
     }
 
     public bool isPlayerWithinLineOfSight()

@@ -17,7 +17,6 @@ public class Golem : Minion
     {
         base.Start();
         Physics2D.IgnoreCollision(playerStats.GetComponent<BoxCollider2D>(), GetComponents<BoxCollider2D>()[1]);
-        this.enemy = this.GetComponent<Transform>();
         leftAreaBoundary = transform.position.x - patrolAreaRadius;
         rightAreaBoundary = transform.position.x + patrolAreaRadius;
         onPatrolMovingLeft = (Random.value > 0.5f);
@@ -40,7 +39,6 @@ public class Golem : Minion
             if (Mathf.Abs(this.transform.position.x - playerStats.transform.position.x) <= 1f) {
                 if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack")) {
                     anim.Play("idle");
-                    Debug.Log("Should be idle");
                 }
             }
             wasChasingPlayer = true;
@@ -81,17 +79,18 @@ public class Golem : Minion
             onPatrolMovingLeft = false;
         }
 
-        float x_movment, x_scale = Mathf.Abs(transform.localScale.x);
+        float x_destination;
+        float x_scale = Mathf.Abs(transform.localScale.x);
         if (onPatrolMovingLeft)
         {
-            x_movment = leftAreaBoundary;
+            x_destination = leftAreaBoundary;
             x_scale = -x_scale;
         }
         else
         {
-            x_movment = rightAreaBoundary;
+            x_destination = rightAreaBoundary;
         }
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(x_movment, transform.position.y, transform.position.z), speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(x_destination, transform.position.y, transform.position.z), speed * Time.deltaTime);
         transform.localScale = new Vector3(x_scale, transform.localScale.y, transform.localScale.z);
     }
 
