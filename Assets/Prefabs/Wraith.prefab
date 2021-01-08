@@ -179,7 +179,7 @@ MonoBehaviour:
   speed: 0
   attackCooldown: 3
   anim: {fileID: 0}
-  lineOfSight: 5
+  lineOfSight: 8
   darkMagicalBallPoint: {fileID: 452474110}
   projectile: {fileID: 4759881236509376049, guid: bec5e078f85a7964d92b2d5595b6d2ab, type: 3}
 --- !u!95 &1519683420

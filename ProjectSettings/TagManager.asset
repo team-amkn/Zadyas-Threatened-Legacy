@@ -26,6 +26,8 @@ TagManager:
   - pauseMenu
   - ResumeButton
   - QuitButton
+  - OptionsButton
+  - OptionsMenu
   layers:
   - Default
   - TransparentFX

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject optionsMenu;
+
     public void PlayGame()
     {
         PlaySound();
@@ -15,6 +17,11 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.instance.MenuSFX.volume = 1f * AudioManager.GetVolumeMultiplier();
         AudioManager.instance.MenuSFX.Play();
+    }
+
+    public void OpenOptionsMenu()
+    {
+        Instantiate(optionsMenu);
     }
 
     public void QuitGame()

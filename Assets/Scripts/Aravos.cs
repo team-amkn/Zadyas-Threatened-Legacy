@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Aravos : Enemy
 {
@@ -132,8 +133,16 @@ public class Aravos : Enemy
             isDead = true;
             AudioManager.instance.PlaySingle(aravosDeath, 0.2f, 1f, 1f);
             anim.Play("Death");
-            Destroy(this.gameObject, 3f);
-            //Shoof hata3mel eh tany lamma ymoot
+            StartCoroutine(PlayEndCutscene());
+        }
+    }
+
+    IEnumerator PlayEndCutscene()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(3);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

@@ -36,7 +36,10 @@ public class AudioManager : MonoBehaviour
             Destroy(instance.gameObject);
             instance = this;
         }
-        instance.BGMusicSrc.volume = originalBGMusicValue;
+        if (instance.BGMusicSrc) {
+            instance.BGMusicSrc.volume = originalBGMusicValue;
+        }
+        
         DontDestroyOnLoad(this.gameObject);
     }
 

@@ -14,7 +14,7 @@ public class LevelManager : MonoBehaviour
     private static float superFireBallCooldown, dashCooldown;
     public static float leftLevelBoundary, rightLevelBoundary;
     public static bool arePlayerStatsSaved = false;
-    public GameObject pauseMenu, gameOverMenu;
+    public GameObject pauseMenu, gameOverMenu, optionsMenu;
     public static LevelManager currLevelManger;
     protected static bool isGamePaused = false;
     private static bool isPlayerDead = false;
@@ -123,8 +123,14 @@ public class LevelManager : MonoBehaviour
         GameObject pausemenu = Instantiate(LevelManager.currLevelManger.pauseMenu);
         GameObject resumeButton = FindObjectWithTagInChildrenRecursive(pausemenu, "ResumeButton");
         GameObject quitButton = FindObjectWithTagInChildrenRecursive(pausemenu, "QuitButton");
+        GameObject optionsButton = FindObjectWithTagInChildrenRecursive(pausemenu, "OptionsButton");
         resumeButton.GetComponent<Button>().onClick.AddListener(currLevelManger.ResumeGame);
         quitButton.GetComponent<Button>().onClick.AddListener(currLevelManger.ExitGame);
+        optionsButton.GetComponent<Button>().onClick.AddListener(currLevelManger.OpenOptionsMenu);
+    }
+
+    public void OpenOptionsMenu() {
+        GameObject optionsMenu = Instantiate(LevelManager.currLevelManger.optionsMenu);
     }
 
     public void RestartLevel()

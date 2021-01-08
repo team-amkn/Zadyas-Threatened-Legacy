@@ -1868,6 +1868,7 @@ MonoBehaviour:
   intialCheckPoint: {fileID: 1032269636}
   pauseMenu: {fileID: 458659812545653073, guid: 1c2bf1c37009da342a8a2aa0b2f2f6a4, type: 3}
   gameOverMenu: {fileID: 1099554172845040542, guid: 58a19e83317e04a479de81ca1838ede5, type: 3}
+  optionsMenu: {fileID: 1813342292468586695, guid: 6c58095a5931a004b98f3a91755d1644, type: 3}
   maxGolemsCount: 2
   maxWraithCount: 2
   currGolemCount: 0
@@ -2845,7 +2846,7 @@ MonoBehaviour:
   attackCooldown: 3
   anim: {fileID: 0}
   healthbar: {fileID: 1836841480}
-  HP: 100
+  HP: 10
   lightninigBoltsCooldown: 5
   minionSummonCooldown: 5
   cursedFireballCooldown: 3
