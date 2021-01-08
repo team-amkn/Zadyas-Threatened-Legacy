@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
     public float groundCheckRadius;
     public LayerMask whatIsGround;
     private bool grounded;
-    private Animator anim;
+    public Animator anim;
 
     //Shooting basic fireball
     public Transform  shootingPoint;
