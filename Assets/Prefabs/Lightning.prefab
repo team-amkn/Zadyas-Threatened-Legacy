@@ -319,4 +319,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
   damage: 1
-  duration: 1
+  duration: 0.3

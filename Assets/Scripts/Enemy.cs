@@ -3,43 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Enemy : Stats
+public class Enemy : MonoBehaviour
 {
-    public float lineOfSight;
-    public PlayerStats playerStats;
-    public Transform enemy;
-    public bool scalePositiveWhenFacingRight = true;
+    public float speed;
+    protected PlayerStats playerStats;
+    protected bool scalePositiveWhenFacingRight = true;
+    public float attackCooldown;
+    protected bool isAttackOnCooldown = false;
+    public Animator anim;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        ResetHealth();
         playerStats = FindObjectOfType<PlayerStats>();
-
+        this.anim = this.gameObject.GetComponent<Animator>();
     }
 
     protected virtual void FacePlayer()
     {
-        
-        var x_diff = playerStats.transform.position.x - enemy.transform.position.x;
-        float new_x;
-        if (x_diff > 0)
+        //Calculate distance between player and enemy to know if the player is on the left or on the right
+        var x_distance = playerStats.transform.position.x - this.gameObject.transform.position.x;
+        float newXScale;
+        //The player is on the right
+        if (x_distance > 0)
         {
-            new_x = System.Math.Abs(enemy.transform.localScale.x);
+            newXScale = System.Math.Abs(this.gameObject.transform.localScale.x);
         }
-        else
+        else //The player is on the left
         {
-            new_x = -System.Math.Abs(enemy.transform.localScale.x);
+            newXScale = -System.Math.Abs(this.gameObject.transform.localScale.x);
         }
-        if (!scalePositiveWhenFacingRight) new_x = -new_x;
-       enemy.transform.localScale = new Vector3(new_x, enemy.transform.localScale.y, enemy.transform.localScale.z);
-    }
+        //To handle the case if the sprite itself was facing left initially and then modified in the inspector to face right by setting its x localscale to negtive value (The frog for example)
+        if (!scalePositiveWhenFacingRight) newXScale = -newXScale;
 
-    public bool isPlayerWithinLineOfSight()
-    {
-        if (lineOfSight >= Mathf.Abs(playerStats.transform.position.x - transform.position.x))
-            return true;
-        else
-            return false;
+        this.gameObject.transform.localScale = new Vector3(newXScale, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
     }
 }

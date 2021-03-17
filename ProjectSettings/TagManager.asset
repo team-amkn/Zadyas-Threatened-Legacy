@@ -10,6 +10,24 @@ TagManager:
   - Enemy
   - Wall
   - Golem
+  - Wraith
+  - basicFireball
+  - GolemHitbox
+  - Ground
+  - Platform
+  - Heart
+  - DashCoolDownGUI
+  - SuperFireBallCoolDownGUI
+  - gameOverCanvas
+  - BigMonster
+  - RespawnButton
+  - RestartLevelButton
+  - AravosPlatform
+  - pauseMenu
+  - ResumeButton
+  - QuitButton
+  - OptionsButton
+  - OptionsMenu
   layers:
   - Default
   - TransparentFX

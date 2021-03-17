@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public int damage;
-    public int speed;
-    protected Transform sourceGameObject;
-    public float distanceTravelled;
+    public float damage;
+    public float speed;
+    private Transform sourceGameObject; //The game object that shot the projectile so we can calculate the distance from it
+    protected float distanceTravelled;
     public float maximumTravelledDistance;
+    private Vector3 sourcePosition;
 
-    // Start is called before the first frame update
-    void Start()
+    public Transform SourceGameObject { get => sourceGameObject; set => sourceGameObject = value; }
+    public Vector3 SourcePosition { get => sourcePosition; set => sourcePosition = value; }
+
+
+    protected virtual void shootProjectile()
     {
-
-    }
-
-    protected void shootProjectile()
-    {
-
-        if (sourceGameObject.transform.localScale.x < 0)
+        if (SourceGameObject.transform.localScale.x < 0)
         {
             speed = -speed;
             this.transform.localScale = new Vector3(-(this.transform.localScale.x),
@@ -27,15 +25,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    protected virtual void Update()
+    protected virtual void calculateTravelDistance()
     {
+        if (this.transform == null) return;
+        distanceTravelled = Mathf.Abs(this.transform.position.x - sourcePosition.x);
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(speed, GetComponent<Rigidbody2D>().velocity.y);
-
-        distanceTravelled = Mathf.Abs(this.transform.position.x - sourceGameObject.transform.position.x);
-
-        if (distanceTravelled > maximumTravelledDistance)
+        if (distanceTravelled >= maximumTravelledDistance)
         {
             Destroy(this.gameObject);
         }

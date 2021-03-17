@@ -2,36 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class basicFireball : Projectile
+public class basicFireball : AxelFireball
 {
 
-    private Transform axel;
+    private bool hasCollided = false;
 
-    void Start()
+    protected void Update()
     {
-        axel = FindObjectOfType<Player>().GetComponent<Transform>();
-        sourceGameObject = axel;
-        shootProjectile();
+        this.calculateTravelDistance();
     }
 
-    // Update is called once per frame
-    protected override void Update()
-    {  
-       base.Update();
-    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-       if(other.tag == "Minion")
+        if (this.hasCollided)
         {
-
-        }
-       if(other.tag == "Aravos")
-        {
-
+            return;
         }
 
-        //Destroy(this.gameObject);
+        if (other.tag == "Wraith")
+        {
+            other.GetComponent<Wraith>().die();
+            Destroy(this.gameObject, 0f);
+            this.hasCollided = true;
+
+        }
+        else if (other.tag == "GolemHitbox")
+        {
+            other.GetComponentInParent<Golem>().die();
+            Destroy(this.gameObject, 0f);
+            this.hasCollided = true;
+        }
+
+        else if (other.tag == "Aravos")
+        {
+            other.GetComponent<Aravos>().TakeDamage(damage);
+            Destroy(this.gameObject);
+            this.hasCollided = true;
+        }
+        else if (other.tag == "Wall" || other.tag == "Platform" || other.tag == "AravosPlatform")
+        {
+            Destroy(this.gameObject);
+            this.hasCollided = true;
+        }
     }
-    
 }

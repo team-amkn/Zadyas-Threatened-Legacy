@@ -5,14 +5,13 @@ using UnityEngine;
 public class LevelManager1 : LevelManager
 {
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+        currLevelManger = this;
         LevelManager.CurrCheckPoint = intialCheckPoint;
+        LevelManager.leftLevelBoundary = -7.74f;
+        LevelManager.rightLevelBoundary = 82.68f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
